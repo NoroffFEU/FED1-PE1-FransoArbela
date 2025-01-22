@@ -1,0 +1,46 @@
+@import url("reset.css");
+@import url("variables.css");
+@import url("components.css");
+@import url("variables.css");
+@import url("css-pages/blog-feed.css");
+@import url("css-pages/login-register.css");
+
+
+#loginError {
+  color: rgb(179, 0, 0);
+  border-radius: 4px;
+  background: #ffc9ab;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  width: 16rem;
+  padding: 0.5rem 1rem;
+}
+
+.loginDisplayError {
+  height: 2.2rem;
+}
+
+/* Default input styles */
+input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Error style for inputs */
+
+input.error {
+  border-color: red;
+}
+
+#profile-banner {
+  width: 200px;
+}
+
+p {
+  color: rgb(61, 61, 61);
+  min-height: 3rem;
+  font-family: var(--secondary-font);
+}

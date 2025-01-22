@@ -1,0 +1,52 @@
+header {
+  background-color: gray;
+  width: 100%;
+  padding: 0 16rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+  display: flex;
+  gap: 1rem;
+}
+
+li {
+  list-style: none;
+}
+li a{
+    text-decoration: none;
+    color: white;
+}
+
+header img {
+  width: 100px;
+}
+
+button,
+.secondary-button {
+  border-radius: 4px;
+  background: var(--primary-button);
+  color: white;
+  display: flex;
+  width: 15rem;
+  height: 64px;
+  padding: 15px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  border: none;
+}
+
+.secondary-button {
+  background: var(--secondary-button);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
