@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/reset.css">    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script type="module" src="/assets/js/edit/edit.js" defer></script>
+    <title>Manage Posts</title>
+  </head>
+  <body>
+
+    <header>
+        <!-- logo -->
+        <div id="logo">
+          <img src="/assets/images/Logo.png" alt="" />
+        </div>
+        <!-- nav -->
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post/blog-feed.html">Blog</a></li>
+            <li><a href="/account/login.html">Log in</a></li>
+            <li><a href="/account/register.html">Register</a></li>
+          </ul>
+          <button class="logout">log out</button>
+        </nav>
+    </header>
+
+
+    
+    <form id="create-post-form">
+      <label for="title">Title:</label>
+      <input
+        type="input"
+        id="title"
+        placeholder="Enter your post title"
+        required
+      />
+      <label for="body">Body:</label>
+      <input type="input" id="body" placeholder="Enter your body" />
+      <label for="body">Image:</label>
+      <input type="input" id="img" placeholder="Enter your image url" />
+      <button id="createNewPost">Create</button>
+
+    </form>
+
+  </body>
+</html>

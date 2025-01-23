@@ -2,7 +2,7 @@
 const userName = document.querySelector("#username");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
-const submitButton = document.querySelector("#register");
+const submitButton = document.querySelector(".register");
 
 async function registerUser(credentials) {
   try {
@@ -20,10 +20,10 @@ async function registerUser(credentials) {
       throw new Error(`Error: ${response.status} - ${data.message || response.statusText}`);
     }
 
-    return data; // Returns the login data (e.g., token)
+    return data; // Returns the login data
   } catch (error) {
     console.error("There was a problem with the login operation:", error);
-    return null; // Return null to indicate failure
+    return null; 
   }
 }
 
@@ -38,7 +38,7 @@ submitButton.addEventListener("click", (event) => {
 
   registerUser(credentials).then((data) => {
     if (data) {
-      alert("Registration successful:", data); // Log the returned data (e.g., token)
+      alert("Registration successful:", data); // Log the returned data 
     } else {
       console.log("Registration failed.");
     }

@@ -1,10 +1,91 @@
 @import url("reset.css");
 @import url("variables.css");
-@import url("components.css");
 @import url("variables.css");
 @import url("css-pages/blog-feed.css");
 @import url("css-pages/login-register.css");
+@import url("css-pages/profile.css");
 
+/* header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 14rem;
+  box-shadow: var(--box-shadow);
+  max-height: 4rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+ul {
+  display: flex;
+  gap: 1rem;
+}
+
+li {
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: all 0.1s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+}
+
+li a:hover {
+  border-bottom: 1px solid rgba(8, 18, 53, 0.708);
+}
+li a:active {
+  background-color: rgba(45, 58, 101, 0.203);
+  
+}
+
+#logo img {
+  width: 200px;
+}
+
+#logo {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+button,
+.secondary-button {
+  border-radius: 4px;
+  background: var(--primary-button);
+  color: white;
+  display: flex;
+  width: 15rem;
+  height: 64px;
+  padding: 15px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.secondary-button {
+  background: var(--secondary-button);
+}
+
+.logout {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
 
 #loginError {
   color: rgb(179, 0, 0);
@@ -30,7 +111,6 @@ input {
 }
 
 /* Error style for inputs */
-
 input.error {
   border-color: red;
 }
@@ -39,8 +119,24 @@ input.error {
   width: 200px;
 }
 
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  height: fit-content;
+}
+
 p {
   color: rgb(61, 61, 61);
-  min-height: 3rem;
+  min-height: 3.51rem;
   font-family: var(--secondary-font);
+}
+
+form {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: 100%;
+  gap: 1rem;
 }

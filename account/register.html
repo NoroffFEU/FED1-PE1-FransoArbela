@@ -9,38 +9,48 @@
     <title>Register</title>
 </head>
 <body>
-    <header>
-        <nav>
-          <div id="logo">
-            <img src="/assets/images/Logo.png" alt="" />
-          </div>
-          <ul>
-            <li><a href="../index.html">Home</a></li>  
-            <li><a href="/post/blog-feed.html">Blog</a></li>
-            <li><a href="/account/login.html">Log in</a></li>
-            <li><a href="/account/register.html">Register</a></li>
-          </ul>
-          <!-- <button id="logout">log out</button> -->
-        </nav>
-      </header>
-    <h1>Register</h1>
-    <form id="register-form">
-      <label for="username">Name:</label>
-      <input type="username" id="username" placeholder="Enter your name" required>
-      
-      <br><br>
+  <header>
+    <!-- logo -->
+    <div id="logo">
+      <img src="/assets/images/Logo.png" alt="" />
+    </div>
+    <!-- nav -->
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="/post/blog-feed.html">Blog</a></li>
+        <li><a href="/account/login.html">Log in</a></li>
+        <li><a href="/account/register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+<main class="login-register-container">
+  <div >
+    <div class="input-wrapper">
+      <h1>Register</h1>
+      <form id="register-form">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        />
+        <button class="register " type="submit">Register</button>
+        <button class="login secondary-button" type="submit">Log in</button>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Enter your email" required>
-
-      <br><br>
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" placeholder="Enter your password" required>
-
-      <br><br>
-
-      <button id="register" type="submit">Register</button>
-    </form>
+      </form>
+    </div>
+</main>
+<footer>
+  <p>&copy; 2025 My Blog. All rights reserved.</p>
+</footer>
 </body>
 </html>

@@ -3,30 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="../assets/js/auth/login.js" defer></script>
     <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <script type="module" src="../assets/js/auth/login.js" defer></script>
     <title>Login</title>
   </head>
   <body>
     <header>
+      <!-- logo -->
+      <div id="logo">
+        <img src="/assets/images/Logo.png" alt="" />
+      </div>
+      <!-- nav -->
       <nav>
-        <div id="logo">
-          <img src="/assets/images/Logo.png" alt="" />
-        </div>
         <ul>
           <li><a href="../index.html">Home</a></li>
           <li><a href="/post/blog-feed.html">Blog</a></li>
           <li><a href="/account/login.html">Log in</a></li>
           <li><a href="/account/register.html">Register</a></li>
         </ul>
-        <!-- <button id="logout">log out</button> -->
       </nav>
     </header>
-    <!-- Display error -->
-    <div class="loginDisplayError"></div>
-    <div class="alreadylogged-in"></div>
-    <h1>Login</h1>
+<main class="login-register-container">
     <div class="input-wrapper">
+      <h1>Login</h1>
       <form id="login-form">
         <label for="email">Email:</label>
         <input
@@ -35,9 +35,6 @@
           placeholder="Enter your email"
           required
         />
-
-        <br /><br />
-
         <label for="password">Password:</label>
         <input
           type="password"
@@ -45,10 +42,11 @@
           placeholder="Enter your password"
           required
         />
-        <br /><br />
-
-        <button id="login" type="submit">Log in</button>
+        <button class="login" type="submit">Log in</button>
+        <button class="register secondary-button" type="submit">Register</button>
       </form>
     </div>
+
+</main>
   </body>
 </html>

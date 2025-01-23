@@ -8,4 +8,7 @@
     --border-radius: 4px;
     --read-more-color: #2F6AA3;
     --transition-0-2s: all 0.2s ease-in-out;
-}
+    --transition-0-3s: all 0.3s ease-in-out;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.146);
+    --box-shadow-hover: 0 0 10px rgba(0, 0, 0, 0.368);
+     }
