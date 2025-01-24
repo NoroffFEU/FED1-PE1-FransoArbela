@@ -1,23 +1,11 @@
-import {
-  checkLogin,
-  logoutAccount,
-  redirectToLogin,
-} from "/assets/js/auth/logout.js";
-const logout = document.querySelector(".logout");
 
-/////////////////////////////////////////////////////////////////////   get posts
+// get link later
 document.addEventListener("DOMContentLoaded", async () => {
-  const loginDataString = localStorage.getItem("loginData");
-  const loginData = JSON.parse(loginDataString);
-  const authorName = loginData.data.name;
-  const apiLink = `https://v2.api.noroff.dev/blog/posts`;
-  const accessToken = localStorage.getItem("accessToken");
   try {
-    const response = await fetch(`${apiLink}/${authorName}`, {
+    const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Samal`, {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `Bearer ${accessToken}`,
       },
     });
 
@@ -25,24 +13,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       const blogPosts = await response.json();
 
       const postsContainer = document.querySelector("#postsContainer");
-
       // Generate posts
       blogPosts.data.forEach((post) => {
         const postElement = document.createElement("div");
         postElement.className = "post-card";
         postElement.id = `${post.id}`;
         postElement.innerHTML = `
-                <h3 id="blog-feed-title">${post.title}</h3>
-                <img src="${post.media?.url || ""}" alt="${
+        <img src="${post.media?.url || ""}" alt="${
           post.media?.alt || "Image"
         }" />
-         <p id="blog-feed-p">${post.body}</p>
-         <div class="button-container">
-         <button class="manage-post-btn" data-class="${
-                  post.id
-                }">Manage</button>          </div>
-            `;
-
+           <h3 id="blog-feed-title" >${post.title}</h3>
+          <p id="blog-feed-p">${post.body}</p>
+          <div class="button-container">
+          <button class="read-more" data-class="${post.id}">Read more...</button>
+          </div>
+    `;
         postsContainer.appendChild(postElement);
       });
 
@@ -53,12 +38,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           window.location.href = `/post/edit.html?id=${postID}`;
           return;
         }
-
         // Handle .post-card clicks
         const postCard = event.target.closest(".post-card");
         if (postCard) {
           const postID = postCard.id;
-          window.location.href = `/post/edit.html?id=${postID}`;
+          window.location.href = `/post/index.html?id=${postID}`;
         }
       });
     } else {
@@ -72,12 +56,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Error fetching blog posts:", error);
   }
 });
-document.addEventListener("DOMContentLoaded", () => {
-  checkLogin();
-});
 
-// Logout functionality
-logout.addEventListener("click", () => {
-  logoutAccount();
-  redirectToLogin();
-});

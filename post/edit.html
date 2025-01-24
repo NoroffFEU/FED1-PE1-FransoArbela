@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script type="module" src="/assets/js/edit/edit.js" defer></script>
+    <script
+      src="/assets/js/public-js-files/dynamicHtmlGenerator.js"
+      defer
+    ></script>
+    <title>Edit</title>
+  </head>
+  <body>
+    <header>
+      <!-- logo -->
+      <div id="logo">
+        <img src="/assets/images/Logo.png" alt="" />
+      </div>
+      <!-- nav -->
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/post/blog-feed.html">Blog</a></li>
+          <li><a href="/account/register.html">Register</a></li>
+          <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
+
+        </ul>
+        <button class="logout">log out</button>
+      </nav>
+    </header>
+    <form id="create-post-form">
+      <label for="title">Title:</label>
+      <input
+        type="input"
+        id="blogPostTitle"
+        placeholder="Enter your post title"
+        required
+      />
+      <label for="body">Body:</label>
+      <textarea type="input" id="blogPostBody" placeholder="Enter your body">
+      </textarea>
+
+      <label for="img">Image:</label>
+      <input
+        type="input"
+        id="blogPostImg"
+        placeholder="Enter your image url"
+        required
+      />
+
+      <label for="tags">Tags:</label>
+      <input type="input" id="blogPostTags" placeholder="Enter tags" />
+
+      <button id="edit">Edit</button>
+    </form>
+  </body>
+</html>
