@@ -9,12 +9,12 @@ export const logoutAccount = () => {
   };
 // redirect to login page
 export const redirectToLogin = () => {
-    window.location.href = "/accounts/login.html";
+    window.location.href = "/account/login.html";
   };
 
 // // checking if user logged in
 export const checkLogin = () => {
     if (!apiKey) {
-        window.location.href = "/accounts/login.html";
+        window.location.href = "/account/login.html";
       }
 }

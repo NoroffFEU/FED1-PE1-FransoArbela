@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (response.ok) {
       const blogPosts = await response.json();
-
       const postsContainer = document.querySelector("#postsContainer");
       // Generate posts
       blogPosts.data.forEach((post) => {
@@ -31,6 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         postsContainer.appendChild(postElement);
       });
 
+
       postsContainer.addEventListener("click", (event) => {
         // Handle button clicks
         if (event.target.classList.contains("manage-post-btn")) {
@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           window.location.href = `/post/index.html?id=${postID}`;
         }
       });
+      if (postsContainer.innerHTML === "") {
+        postsContainer.innerHTML = "<p>No posts found.</p>";
+      }
     } else {
       console.error(
         "Failed to fetch blog posts:",

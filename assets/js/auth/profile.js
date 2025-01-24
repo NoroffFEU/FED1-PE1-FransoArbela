@@ -1,25 +1,24 @@
-import { checkLogin, logoutAccount, redirectToLogin} from "/assets/js/auth/logout.js";
+import {
+  checkLogin,
+  logoutAccount,
+  redirectToLogin,
+} from "/assets/js/auth/logout.js";
 
 // Select DOM elements
-const logout = document.querySelector(".logout");
 const profileContainer = document.querySelector("#profile-container");
 const createNewPostPage = document.querySelector("#createNewPostPage");
 
-
-
 document.addEventListener("DOMContentLoaded", async (event) => {
+  const apiKey = localStorage.getItem("apiKey");
+  const accessToken = localStorage.getItem("accessToken");
+  const loginDataString = localStorage.getItem("loginData");
+  const loginData = JSON.parse(loginDataString);
+  const authorName = loginData.data.name;
+  const AuthorEmail = loginData.data.email;
+  const AuthorProfilePic = loginData.data.banner.url;
+  const AuthorAvatar = loginData.data.avatar.url;
 
- const apiKey = localStorage.getItem("apiKey");
- const accessToken = localStorage.getItem("accessToken");
- const loginDataString = localStorage.getItem("loginData");
- const loginData = JSON.parse(loginDataString);
- const authorName = loginData.data.name;
- const AuthorEmail = loginData.data.email;
- const AuthorProfilePic = loginData.data.banner.url;
- const AuthorAvatar = loginData.data.avatar.url;
-
- event.preventDefault();
-
+  event.preventDefault();
 
   try {
     const response = await fetch(`https://v2.api.noroff.dev`, {
@@ -47,17 +46,11 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   }
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
   checkLogin();
 });
 
 // Logout functionality
-logout.addEventListener("click", () => {
-  logoutAccount();  
-  redirectToLogin();
-});
-
 
 // Navigation to Manage Posts page
 createNewPostPage.addEventListener("click", (event) => {

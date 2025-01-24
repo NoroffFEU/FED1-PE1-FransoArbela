@@ -32,8 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const blogPosts = await response.json();
         
         const postsContainer = document.querySelector("#postsContainer");
-      
-          blogPosts.data.forEach((post) => {
+        blogPosts.data.forEach((post) => {
             const postElement = document.createElement("div");
             postElement.className = "post-card";
             postElement.id = `${post.id}`;
@@ -58,11 +57,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
               }
               if (event.target.classList.contains("delete-post-btn")) {
-                const postID = event.target.getAttribute("data-class");
-                deletePost(postID);
-                return;
+                const isConfirmed = confirm(
+                  "Are you sure you want to delete this post?"
+                );
+                if (isConfirmed) {
+                  const postID = event.target.getAttribute("data-class");
+                  deletePost(postID);
+                  return;
               }
+            }
             });
+
+            if (postsContainer.innerHTML === "") {
+              postsContainer.innerHTML = "<p>No posts found.</p>";
+            }
           
       } else {
         console.error(
@@ -75,4 +83,3 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.error("Error fetching blog posts:", error);
     }
   });
-
