@@ -1,12 +1,10 @@
-
 #postsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 1rem;
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 0 20px;
-  margin-top: 10rem;
+  max-width: 1500px;
+  padding: 4rem 1rem;
 }
 .post-card {
   display: flex;
@@ -21,11 +19,13 @@
 }
 
 .post-card:hover {
-  box-shadow: var(--box-shadow-hover); 
+  box-shadow: var(--box-shadow-hover);
+  transform: scale(1.02);
 }
 
 .post-card img {
   width: 100%;
+  height: 200px;
   object-fit: cover;
   border-radius: var(--border-radius);
 }
@@ -45,12 +45,14 @@
   line-clamp: 3;
   line-height: 117.305%;
   font-weight: 400;
-  background-color: thistle;
 }
 
 .button-container {
   width: 100%;
   padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .read-more {

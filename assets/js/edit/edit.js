@@ -2,23 +2,19 @@ const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
 
 // Query selectors
-const title = document.querySelector("#blogPostTitle");
-const body = document.querySelector("#blogPostBody");
-const img = document.querySelector("#blogPostImg");
+const title = document.querySelector("#create-new-post-title");
+const body = document.querySelector("#create-new-post-body");
+const img = document.querySelector("#create-new-post-img");
 const tags = document.querySelector("#blogPostTags");
 const edit = document.querySelector("#edit");
 
-// 
+// define the API
 const apiLink = `https://v2.api.noroff.dev/blog/posts`;
 const accessToken = localStorage.getItem("accessToken");
 const loginDataString = localStorage.getItem("loginData");
 const loginData = JSON.parse(loginDataString);
 const authorName = loginData.data.name;
 const blogPostUrl = `${apiLink}/${authorName}`;
-
-
-
-
 
 edit.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -67,25 +63,26 @@ edit.addEventListener("click", async (event) => {
   }
 });
 
+// fetch the input values of the blog post
 
-document.addEventListener ("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Samal/${postId}`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    });
+    const response = await fetch(
+      `https://v2.api.noroff.dev/blog/posts/Samal/${postId}`,
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    );
 
     if (response.ok) {
-     console.log(response)
       const blogPost = await response.json();
       title.value = blogPost.data.title;
       body.value = blogPost.data.body;
       img.value = blogPost.data.media.url;
       tags.value = blogPost.data.tags;
-
-
     } else {
       console.error(
         "Failed to fetch blog posts:",
@@ -96,8 +93,4 @@ document.addEventListener ("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("Error fetching blog posts:", error);
   }
-});
-
-document.addEventListener("DOMContentLoaded",  () => {
-  getData();
 });

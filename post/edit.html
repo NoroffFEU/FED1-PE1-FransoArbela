@@ -8,7 +8,7 @@
     <script type="module" src="/assets/js/edit/edit.js" defer></script>
     <script
       type="module"
-      src="/assets/js/public-js-files/dynamicHtmlGenerator.js"
+      src="/assets/js/public-js-files/caseOfLoggedIn.js"
       defer
     ></script>
 
@@ -25,36 +25,45 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/post/blog-feed.html">Blog</a></li>
-          <li><a href="/account/register.html">Register</a></li>
+          <li>
+            <a id="registerBtn" href="/account/register.html">Register</a>
+          </li>
           <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
         </ul>
-        <button class="logout">log out</button>
       </nav>
     </header>
-    <form id="create-post-form">
-      <label for="title">Title:</label>
-      <input
-        type="input"
-        id="blogPostTitle"
-        placeholder="Enter your post title"
-        required
-      />
-      <label for="body">Body:</label>
-      <textarea type="input" id="blogPostBody" placeholder="Enter your body">
-      </textarea>
+    <main>
+      <section>
+        <form id="create-post-form">
+          <label for="create-new-post-title">Title:</label>
+          <input
+            type="input"
+            id="create-new-post-title"
+            placeholder="Enter your post title"
+            required
+          />
+          <label for="create-new-post-body">Body:</label>
+          <textarea
+            type="input"
+            id="create-new-post-body"
+            placeholder="Enter your body"
+          >
+          </textarea>
 
-      <label for="img">Image:</label>
-      <input
-        type="input"
-        id="blogPostImg"
-        placeholder="Enter your image url"
-        required
-      />
+          <label for="create-new-post-img">Image:</label>
+          <input
+            type="input"
+            id="create-new-post-img"
+            placeholder="Enter your image url"
+            required
+          />
 
-      <label for="tags">Tags:</label>
-      <input type="input" id="blogPostTags" placeholder="Enter tags" />
+          <label for="tags">Tags:</label>
+          <input type="input" id="blogPostTags" placeholder="Enter tags" />
 
-      <button id="edit">Edit</button>
-    </form>
+          <button id="edit">Edit</button>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

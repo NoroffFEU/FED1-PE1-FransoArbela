@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <script type="module" src="/assets/js/edit/create.js" defer></script>
-    <script type="module" src="/assets/js/public-js-files/dynamicHtmlGenerator.js" defer></script>
+    <script
+      type="module"
+      src="/assets/js/public-js-files/caseOfLoggedIn.js"
+      defer
+    ></script>
     <title>Manage Posts</title>
   </head>
   <body>
@@ -20,25 +24,44 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/post/blog-feed.html">Blog</a></li>
-          <li><a href="/account/register.html">Register</a></li>
+          <li>
+            <a id="registerBtn" href="/account/register.html">Register</a>
+          </li>
           <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
         </ul>
       </nav>
     </header>
 
-    <form id="create-post-form">
-      <label for="title">Title:</label>
-      <input
-        type="input"
-        id="title"
-        placeholder="Enter your post title"
-        required
-      />
-      <label for="body">Body:</label>
-      <input type="input" id="body" placeholder="Enter your body" />
-      <label for="body">Image:</label>
-      <input type="input" id="img" placeholder="Enter your image url" />
-      <button id="createNewPost">Create</button>
-    </form>
+    <main>
+      <section>
+        <form id="create-post-form">
+          <!-- title -->
+          <label for="create-new-post-title">Title:</label>
+          <input
+            type="input"
+            id="create-new-post-title"
+            placeholder="Enter your post title"
+            required
+          />
+          <!-- body -->
+          <label for="create-new-post-body">Body:</label>
+          <!-- <input
+            type="input"
+            id="create-new-post-body"
+            placeholder="Enter your body"
+          /> -->
+          <textarea name="create-new-post-body" id="create-new-post-body" placeholder="Enter your body"></textarea>
+          <!-- img -->
+          <label for="create-new-post-img">Image:</label>
+          <input
+            type="input"
+            id="create-new-post-img"
+            placeholder="Enter your image url"
+          />
+          <!-- create button -->
+          <button id="create-new-post">Create</button>
+        </form>
+      </section>
+    </main>
   </body>
 </html>
