@@ -18,8 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
 submit.addEventListener("click", (event) => {
   event.preventDefault();
+
   const loginAndUseToken = async () => {
     const loginUrl = "https://v2.api.noroff.dev/auth/login";
     const apiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
@@ -28,6 +31,7 @@ submit.addEventListener("click", (event) => {
       email: `${emailInput.value}`,
       password: `${passwordInput.value}`,
     };
+
 
     try {
       // Step 1: Log in and get the token
@@ -39,12 +43,14 @@ submit.addEventListener("click", (event) => {
         },
         body: JSON.stringify(loginPayload),
       });
+
       if (!loginResponse.ok) {
         throw new Error("Login failed: " + (await loginResponse.text()));
       }
 
       const loginData = await loginResponse.json();
       const loginDataString = JSON.stringify(loginData);
+
       // push to local storage
       localStorage.setItem("loginData", loginDataString);
 
@@ -56,7 +62,6 @@ submit.addEventListener("click", (event) => {
       const apiKeyPayload = {
         data: {
           name: `${autherName}`,
-          status: "string",
           key: `${apiKey}`,
         },
         meta: {},
@@ -78,10 +83,11 @@ submit.addEventListener("click", (event) => {
           "API Key creation failed: " + (await apiKeyResponse.text())
         );
       }
-
       const apiKeyData = await apiKeyResponse.json();
       console.log("API Key created successfully:", apiKeyData);
+
       localStorage.setItem("apiKey", apiKeyData.data.key);
+      console.log("API Key:", apiKeyData.data.key);
     } catch (error) {
       console.error("Error:", error);
     }

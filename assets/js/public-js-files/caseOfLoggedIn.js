@@ -4,7 +4,6 @@ const loginDataString = localStorage.getItem("loginData");
 const loginData = JSON.parse(loginDataString);
 
 document.addEventListener("DOMContentLoaded", () => {
-  const postsContainer = document.querySelector("#postsContainer");
 
   if (loginData) {
     // change the login button to the author's name
@@ -29,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
       logoutAccount();
       redirectToLogin();
     });
+
+    // const autherName = loginData.data.name;
+    // console.log(autherName);
   }
 
 });

@@ -18,15 +18,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         postElement.className = "post-card";
         postElement.id = `${post.id}`;
         postElement.innerHTML = `
-        <img src="${post.media?.url || ""}" alt="${
-          post.media?.alt || "Image"
-        }" />
-           <h3 id="blog-feed-title" >${post.title}</h3>
+          <img src="${post.media?.url || ""}" alt="${post.media?.alt || "Image"}" />
+          <h3 id="blog-feed-title">${post.title}</h3>
           <p id="blog-feed-p">${post.body}</p>
-          <div class="button-container">
-          <button class="read-more" data-class="${post.id}">Read more...</button>
+          <div class="read-more-button-container">
+            <button class="read-more" data-class="${post.id}">Read more...</button>
           </div>
-    `;
+        `;
         postsContainer.appendChild(postElement);
       });
 

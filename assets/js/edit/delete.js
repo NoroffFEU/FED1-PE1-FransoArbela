@@ -1,3 +1,8 @@
+
+
+
+
+
 export const deletePost = async (postId) => {
   const apiLink = `https://v2.api.noroff.dev/blog/posts`;
   const accessToken = localStorage.getItem("accessToken");

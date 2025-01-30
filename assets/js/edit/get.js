@@ -1,13 +1,4 @@
-import {
-  checkLogin,
-  logoutAccount,
-  redirectToLogin,
-} from "/assets/js/auth/logout.js";
-import { deletePost } from "/assets/js/edit/delete.js";
-// Query selectors
-const logout = document.querySelector(".logout");
 
-//
 
 /////////////////////////////////////////////////////////////////////   get posts
 document.addEventListener("DOMContentLoaded", async () => {
@@ -35,21 +26,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         postElement.className = "post-card";
         postElement.id = `${post.id}`;
         postElement.innerHTML = `
-            <img src="${post.media?.url || ""}" alt="${
-          post.media?.alt || "Image"
-        }" />
-               <h3 id="blog-feed-title" >${post.title}</h3>
-              <p id="blog-feed-p">${post.body}</p>
-              <div class="button-container">
-              <button class="manage-post-btn" data-class="${
-                post.id
-              }">Edit</button>
-              <button class="delete-post-btn" data-class="${
-                post.id
-              }">Delete</button>
-              </div>
-        `;
-        postsContainer.appendChild(postElement);
+          <div>
+            <img src="${post.media?.url || ""}" alt="${post.media?.alt || "Image"}" />
+            <h3 id="blog-feed-title">${post.title}</h3>
+            <p id="blog-feed-p">${post.body}</p>
+          </div>
+          <div class="button-container">
+            <button class="manage-post-btn" data-class="${post.id}">Edit</button>
+            <button class="delete-post-btn" data-class="${post.id}">Delete</button>
+          </div>
+        `;    postsContainer.appendChild(postElement);
       });
 
       postsContainer.addEventListener("click", (event) => {

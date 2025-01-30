@@ -67,15 +67,12 @@ edit.addEventListener("click", async (event) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch(
-      `https://v2.api.noroff.dev/blog/posts/Samal/${postId}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${apiLink}/${authorName}/${postId}`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
 
     if (response.ok) {
       const blogPost = await response.json();

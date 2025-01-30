@@ -3,7 +3,6 @@ const apiKey = localStorage.getItem("apiKey");
 export const logoutAccount = () => {
   ["apiKey", "loginData", "accessToken"].forEach((key) =>
     localStorage.removeItem(key)
-    
   );
   redirectToLogin()
   };
