@@ -11,44 +11,47 @@
       src="/assets/js/public-js-files/caseOfLoggedIn.js"
       defer
     ></script>
+    <script type="module" src="/assets/js/main.js" defer></script>
+
     <title>Manage Posts</title>
   </head>
   <body>
     <header>
-      <!-- logo -->
-      <div id="logo">
-        <img src="/assets/images/Logo.png" alt="" />
-      </div>
-      <!-- nav -->
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/post/blog-feed.html">Blog</a></li>
-          <li>
-            <a id="registerBtn" href="/account/register.html">Register</a>
-          </li>
-          <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
-        </ul>
-      </nav>
-              <!-- this menu appears for the smaller screens -->
-              <div class="burger-menu ">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-      
-              <div class="offscreen-menu ">
-                <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/post/blog-feed.html">Blog</a></li>
-                  <li>
-                    <a id="registerBtn" href="/account/register.html">Register</a>
-                  </li>
-                  <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
-                </ul>
-              </div>
-    </header>
+      <menu>
+        <!-- logo -->
+        <div id="logo">
+          <img src="/assets/images/Logo.png" alt="" />
+        </div>
+        <!-- nav -->
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post/blog-feed.html">Blog</a></li>
+            <li>
+              <a id="registerBtn" href="/account/register.html">Register</a>
+            </li>
+            <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
+          </ul>
+        </nav>
+        <!-- this menu appears for the smaller screens -->
+        <div class="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
+        <div class="offscreen-menu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post/blog-feed.html">Blog</a></li>
+            <li>
+              <a id="registerBtn" href="/account/register.html">Register</a>
+            </li>
+            <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
+          </ul>
+        </div>
+      </menu>
+    </header>
     <main>
       <section>
         <form id="create-post-form">
@@ -62,7 +65,11 @@
           />
           <!-- body -->
           <label for="create-new-post-body">Body:</label>
-          <textarea name="create-new-post-body" id="create-new-post-body" placeholder="Enter your body"></textarea>
+          <textarea
+            name="create-new-post-body"
+            id="create-new-post-body"
+            placeholder="Enter your body"
+          ></textarea>
           <!-- img -->
           <label for="create-new-post-img">Image:</label>
           <input
