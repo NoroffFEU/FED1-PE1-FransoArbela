@@ -14,21 +14,18 @@ header {
   width: 100%;
   box-shadow: var(--box-shadow);
   max-height: 4rem;
-  background-color: aliceblue;
   position: relative;
 }
 
 menu {
   display: flex;
   align-items: center;
-  background-color: antiquewhite;
   justify-content: space-between;
   width: min(90%, 80rem);
   padding: 0 1rem;
 }
 
 nav {
-  background-color: azure;
   gap: 2rem;
 }
 
