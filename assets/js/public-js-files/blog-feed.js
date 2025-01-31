@@ -1,8 +1,15 @@
+import { getUsername } from "./caseOfLoggedIn.js";
 
-// get link later
+
+const searchInput = document.querySelector("#search");
+
+// Fetch blog posts and display them in the blog feed
 document.addEventListener("DOMContentLoaded", async () => {
+
+const username = getUsername();
+
   try {
-    const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Samal`, {
+    const response = await fetch(`https://v2.api.noroff.dev/blog/posts/${username}`, {
       method: "GET",
       headers: {
         accept: "application/json",
@@ -27,7 +34,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
         postsContainer.appendChild(postElement);
       });
-
 
       postsContainer.addEventListener("click", (event) => {
         // Handle button clicks
@@ -58,3 +64,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+// document.getElementById("search").addEventListener("input", function () {
+//   const searchText = this.value.toLowerCase();
+//   const posts = document.querySelectorAll(".post-card");
+
+//   posts.forEach((post) => {
+//     const title = post.querySelector("h3").innerText.toLowerCase();
+//     const body = post.querySelector("p").innerText.toLowerCase();
+    
+//     if (title.includes(searchText) || body.includes(searchText)) {
+//       post.style.display = "block"; // Show matching posts
+//     } else {
+//       post.style.display = "none"; // Hide non-matching posts
+//     }
+//   });
+// });

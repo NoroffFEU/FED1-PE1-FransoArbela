@@ -1,9 +1,0 @@
-export const apiLink = `https://v2.api.noroff.dev/blog/posts`;
-export const apiKey = localStorage.getItem("apiKey");
-export const accessToken = localStorage.getItem("accessToken");
-export const loginDataString = localStorage.getItem("loginData");
-export const loginData = JSON.parse(loginDataString);
-export const authorName = loginData.data.name;
-export const AuthorEmail = loginData.data.email;
-export const AuthorProfilePic = loginData.data.banner.url;
-export const AuthorAvatar = loginData.data.avatar.url;

@@ -1,10 +1,16 @@
+import { getUsername } from "./caseOfLoggedIn.js";
 // get link later
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
+
+
+
+const username = getUsername();
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await fetch(
-      `https://v2.api.noroff.dev/blog/posts/Samal/${postId}`,
+      `https://v2.api.noroff.dev/blog/posts/${username}/${postId}`,
       {
         method: "GET",
         headers: {

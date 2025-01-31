@@ -1,4 +1,4 @@
-
+import { deletePost } from "./delete.js";
 
 /////////////////////////////////////////////////////////////////////   get posts
 document.addEventListener("DOMContentLoaded", async () => {

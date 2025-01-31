@@ -1,10 +1,10 @@
 import { logoutAccount, redirectToLogin } from "/assets/js/auth/logout.js";
 
+// getting data from local storage
 const loginDataString = localStorage.getItem("loginData");
 const loginData = JSON.parse(loginDataString);
 
 document.addEventListener("DOMContentLoaded", () => {
-
   if (loginData) {
     // change the login button to the author's name
     const authorName = loginData.data.name;
@@ -28,9 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
       logoutAccount();
       redirectToLogin();
     });
-
-    // const autherName = loginData.data.name;
-    // console.log(autherName);
   }
-
 });
+
+// in case the user is not logged in, my name will be displayed in the url,
+// if they are logged in, their name will be displayed
+export function getUsername() {
+  const loginDataString = localStorage.getItem("loginData");
+  if (!loginDataString) return "Samal";
+  try {
+    const loginData = JSON.parse(loginDataString);
+    return loginData?.data?.name || "Samal";
+  } catch (error) {
+    return "Samal";
+  }
+}

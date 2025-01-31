@@ -4,16 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/style.css" />
-    <script type="module" src="/assets/js/public-js-files/blog-feed.js" defer></script>
-    <script type="module" src="/assets/js/public-js-files/caseOfLoggedIn.js" defer></script>
+    <script
+      type="module"
+      src="/assets/js/public-js-files/blog-feed.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="/assets/js/public-js-files/caseOfLoggedIn.js"
+      defer
+    ></script>
 
     <title>Document</title>
   </head>
   <header>
+
     <!-- logo -->
     <div id="logo">
       <img src="/assets/images/Logo.png" alt="" />
     </div>
+
     <!-- nav -->
     <nav>
       <ul>
@@ -25,10 +35,27 @@
     </nav>
   </header>
   <body>
+
+    <!-- main content -->
     <main>
       <section>
-        <div id="postsContainer"></div>
+        <h3>circle</h3>
+      </section>
+      <section>
+        <label for="search">search</label>
+        <input type="search" name="search" id="search" placeholder="search" />
+      </section>
 
+      <section> 
+      <select name="" id="">
+        <option value="all">All</option>
+          <option value="latest">Latest</option>
+          <option value="al">Oldest</option>
+      </select>
+
+      </section>
+      <section>
+        <div id="postsContainer"></div>
       </section>
     </main>
   </body>
