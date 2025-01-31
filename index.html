@@ -10,31 +10,54 @@
       src="/assets/js/public-js-files/caseOfLoggedIn.js"
       defer
     ></script>
+    <script type="module" src="/assets/js/main.js" defer></script>
 
     <!-- scripts -->
     <title>Home</title>
   </head>
   <body>
     <header>
-      <!-- logo -->
-      <div id="logo">
-        <img src="/assets/images/Logo.png" alt="" />
-      </div>
-      <!-- nav -->
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/post/blog-feed.html">Blog</a></li>
-          <li>
-            <a id="registerBtn" href="/account/register.html">Register</a>
-          </li>
-          <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
-        </ul>
-      </nav>
+      <menu>
+        <!-- logo -->
+        <div id="logo">
+          <img src="/assets/images/Logo.png" alt="" />
+        </div>
+        <!-- nav -->
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post/blog-feed.html">Blog</a></li>
+            <li>
+              <a id="registerBtn" href="/account/register.html">Register</a>
+            </li>
+            <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
+          </ul>
+        </nav>
+        <!-- this menu appears for the smaller screens -->
+        <div class="burger-menu ">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="offscreen-menu ">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post/blog-feed.html">Blog</a></li>
+            <li>
+              <a id="registerBtn" href="/account/register.html">Register</a>
+            </li>
+            <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
+          </ul>
+        </div>
+
+      </menu>
     </header>
     <main>
       <section>
         <img id="hero-img" src="./assets/images/hero-img.jpg" alt="" />
+      </section>
+      <section>
         <h1 id="hero-title">HotView Labs</h1>
         <p id="about-us-p">
           <span id="text-bold">At</span> HotView Labs, we are at the forefront
@@ -43,7 +66,7 @@
           up-to-date insights that drive innovation in the tech world.
         </p>
         <p id="about-us-p">
-          With a dedicated team of 30 >expert analysts, we explore emerging
+          With a dedicated team of 30 expert analysts, we explore emerging
           technologies, market trends, and disruptive innovations. We work with
           global tech firms, startups, and research institutions to uncover
           valuable data that fuels informed decision-making. Our research covers
@@ -77,6 +100,7 @@
     </main>
     <!-- footer -->
     <footer>
+      <p>&copy; 2025 HotView Labs . All rights reserved.</p>
     </footer>
   </body>
 </html>
