@@ -27,6 +27,8 @@ menu {
 
 nav {
   gap: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 ul {
@@ -158,7 +160,7 @@ h3 {
 }
 
 /* login */
-#loginError {
+.loginError {
   color: rgb(179, 0, 0);
   border-radius: 4px;
   background: #ffc9ab;

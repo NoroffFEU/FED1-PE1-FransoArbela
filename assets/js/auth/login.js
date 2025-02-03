@@ -1,7 +1,7 @@
 const profileContainer = document.querySelector("#profile-container");
-const loginForm = document.querySelector("#login-form");
-const emailInput = document.querySelector("#email");
-const passwordInput = document.querySelector("#password");
+const loginForm = document.querySelector(".login-form");
+const emailInput = document.querySelector(".email");
+const passwordInput = document.querySelector(".password");
 const submit = document.querySelector(".login");
 const alreadyloggedIn = document.querySelector(".alreadylogged-in");
 
@@ -18,8 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
-
 submit.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -31,7 +29,6 @@ submit.addEventListener("click", (event) => {
       email: `${emailInput.value}`,
       password: `${passwordInput.value}`,
     };
-
 
     try {
       // Step 1: Log in and get the token
@@ -45,8 +42,12 @@ submit.addEventListener("click", (event) => {
       });
 
       if (!loginResponse.ok) {
+
         throw new Error("Login failed: " + (await loginResponse.text()));
+
       }
+     
+
 
       const loginData = await loginResponse.json();
       const loginDataString = JSON.stringify(loginData);
