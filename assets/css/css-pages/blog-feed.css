@@ -1,11 +1,14 @@
 #postsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
   margin: 0 auto;
-  max-width: 1500px;
+  max-width: 75vw;
   padding: 4rem 1rem;
+  background-color: rgba(127, 255, 212, 0.356);
 }
+
+
 .post-card {
   display: flex;
   cursor: pointer;
@@ -15,7 +18,7 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: all 0.2s ease-in-out;
-  min-width: 12.5rem;
+  width: 250px;
   justify-content: space-between;
 }
 
