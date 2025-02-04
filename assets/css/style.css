@@ -6,6 +6,11 @@
 @import url("css-pages/profile.css");
 @import url("css-pages/manage-posts.css");
 
+/*  */
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* header */
 header {
   display: flex;
@@ -114,6 +119,7 @@ h3 {
   right: 0;
   display: flex;
 }
+
 .offscreen-menu ul {
   display: flex;
   align-items: center;
