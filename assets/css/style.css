@@ -102,9 +102,9 @@ h3 {
   height: 100vh;
   width: 90%;
   position: absolute;
-  right: -100%;
+  right: -90%;
   top: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out
@@ -112,6 +112,7 @@ h3 {
 }
 .offscreen-menu.active {
   right: 0;
+  display: flex;
 }
 .offscreen-menu ul {
   display: flex;
