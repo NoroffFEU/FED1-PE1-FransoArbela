@@ -1,7 +1,7 @@
 const profileContainer = document.querySelector("#profile-container");
 const loginForm = document.querySelector(".login-form");
-const emailInput = document.querySelector(".email");
-const passwordInput = document.querySelector(".password");
+const emailInput = document.querySelector("#email");
+const passwordInput = document.querySelector("#password");
 const submit = document.querySelector(".login");
 const alreadyloggedIn = document.querySelector(".alreadylogged-in");
 
