@@ -8,19 +8,43 @@ document.addEventListener("DOMContentLoaded", () => {
   if (loginData) {
     // change the login button to the author's name
     const authorName = loginData.data.name;
+
     const nav = document.querySelector("nav");
-    const logoutButton = document.createElement("button");
-    logoutButton.className = "logout";
-    logoutButton.textContent = "log out";
-    const loginBtn = document.getElementById("loginBtn");
+    const offScreenNav = document.querySelector(".offscreen-nav");
+
+    // create a log out button when user is logged in
+    const createLogoutButton = () => {
+      const button = document.createElement("button");
+      button.className = "logout";
+      button.textContent = "Log out";
+      return button;
+    };
+
+    offScreenNav?.appendChild(createLogoutButton());
+    nav?.appendChild(createLogoutButton()); 
+
+    // change the log in text to the authors name
+    // and the direction path to profile instead of log in page
+    const loginBtn = document.querySelector("#loginBtn");
+    const offScreenLoginBtn = document.querySelector("#offscreen-loginBtn");
+
     loginBtn.innerHTML = `${authorName}`;
+    offScreenLoginBtn.innerHTML = `${authorName}`;
+
     loginBtn.id = "profileBtn";
     loginBtn.href = "/pages/profile.html";
-    nav.appendChild(logoutButton);
+    offScreenLoginBtn.id = "profileBtn";
+    offScreenLoginBtn.href = "/pages/profile.html";
 
     // remove register button
-    const registerBtn = document.getElementById("registerBtn");
+    const registerBtn = document.querySelector("#registerBtn");
+    const offScreenRegisterBtn = document.querySelector(
+      "#offscreen-registerBtn"
+    );
     registerBtn.remove();
+    offScreenRegisterBtn.remove();
+
+
 
     // logout functionality
     const logout = document.querySelector(".logout");

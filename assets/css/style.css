@@ -6,6 +6,11 @@
 @import url("css-pages/profile.css");
 @import url("css-pages/manage-posts.css");
 
+/*  */
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* header */
 header {
   display: flex;
@@ -102,9 +107,9 @@ h3 {
   height: 100vh;
   width: 90%;
   position: absolute;
-  right: -100%;
+  right: -90%;
   top: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out
@@ -112,7 +117,9 @@ h3 {
 }
 .offscreen-menu.active {
   right: 0;
+  display: flex;
 }
+
 .offscreen-menu ul {
   display: flex;
   align-items: center;
@@ -125,9 +132,7 @@ h3 {
 
 .burger-menu {
   width: 2rem;
-  /* display: none; */
   cursor: pointer;
-
 }
 .burger-menu span {
   background-color:var(--primary-button);
@@ -141,6 +146,7 @@ h3 {
 }
 .burger-menu.is-active {
  z-index:1;
+ margin-right: 1rem;
 }
 
 .burger-menu.is-active span:nth-child(1) {
@@ -215,7 +221,7 @@ form {
 }
 
 #hero-img {
-  width: 100%;
+  width: 50%;
   max-height: 35rem;
   object-fit: cover;
   margin-bottom: 2rem;
@@ -264,13 +270,15 @@ footer p {
   color: whitesmoke;
 }
 
+
+
 @media (max-width: 685px) {
   nav{
     display: none;
   }
 }
 @media (min-width: 685px) {
-  .burger-menu, .offscreen-menu  {
+  .burger-menu, .offscreen-menu.active  {
     display: none;
   }
 }
