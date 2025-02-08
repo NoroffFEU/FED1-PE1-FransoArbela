@@ -42,11 +42,8 @@ submit.addEventListener("click", (event) => {
       });
 
       if (!loginResponse.ok) {
-
         throw new Error("Login failed: " + (await loginResponse.text()));
-
       }
-     
 
 
       const loginData = await loginResponse.json();
