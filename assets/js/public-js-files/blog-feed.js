@@ -32,31 +32,51 @@ document.addEventListener("DOMContentLoaded", async () => {
     const carousel = document.querySelector(".carousel"); // Select carousel container
 
     // Generate blog images for the carousel
-    blogPosts.data.forEach((post) => {
+    blogPosts.data.forEach((post, index) => {
       const carouselImgAndTitle = document.createElement("div");
-      carouselImgAndTitle.classList = "carousel-posts";
+      carouselImgAndTitle.classList.add("carousel-posts");
+      carouselImgAndTitle.id = `${post.id}`; // Assign ID to the div itself
+
       carouselImgAndTitle.innerHTML = `
-        <h1 class="carousel-titles">${post.title}</h1>
-        <img class="carousel-images" src="${post.media?.url}" alt="${post.media?.alt}">
-      `;
+      <h1 class="carousel-titles">${post.title}</h1>
+      <img class="carousel-images" src="${post.media?.url}" alt="${post.media?.alt}">
+  `;
 
-      carouselImgAndTitle.id = `${post.id}`;
       carousel.appendChild(carouselImgAndTitle);
-
-      // Redirect to post page when clicking on a carousel item
-      carouselImgAndTitle.addEventListener("click", (event) => {
-        const postID = event.currentTarget.id;
-        window.location.href = `/post/index.html?id=${postID}`;
-      });
     });
 
-    const viewPost = document.createElement("p")
-    viewPost.innerText = "View Post"
-    carousel.appendChild(viewPost);
+    // Select all carousel items after they are added to the DOM
+    const allCarouselItems = document.querySelectorAll(".carousel-posts");
+
+    // Redirect only when clicking the **currently displayed** slide
+    carousel.addEventListener("click", () => {
+      const currentSlide = document.querySelector(
+        ".carousel-images.display-slide"
+      );
+      const currentTitle = document.querySelector(
+        ".carousel-titles.display-slide"
+      );
+
+      if (!currentSlide || !currentTitle) {
+        console.error("No active slide found!");
+        return;
+      }
+
+      const postID = currentSlide.closest(".carousel-posts")?.id;
+
+      if (!postID) {
+        console.error("Post ID not found!");
+        return;
+      }
+
+      console.log("Redirecting to post:", postID);
+      window.location.href = `/post/index.html?id=${postID}`;
+    });
 
     // Initialize carousel functionality
     const allCarouselImg = document.querySelectorAll(".carousel-images");
     const allCarouselTitles = document.querySelectorAll(".carousel-titles");
+
     let slideIndex = 0,
       intervalId;
 
@@ -70,13 +90,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
 
       // Ensure index stays within bounds
-
-      slideIndex =
-        index >= allCarouselImg.length
-          ? 0
-          : index < 0
-          ? allCarouselImg.length - 1
-          : index;
+      if (index >= allCarouselImg.length) {
+        slideIndex = 0;
+      } else if (index < 0) {
+        slideIndex = allCarouselImg.length - 1;
+      } else {
+        slideIndex = index;
+      }
 
       // Display the current slide
       allCarouselImg[slideIndex].classList.add("display-slide");
@@ -99,11 +119,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Automatically change slides every 6 seconds
     const autoDisplayImgs = () => {
-      allCarouselImg.length && allCarouselImg[slideIndex].classList.add("display-slide");
-      allCarouselImg.length && allCarouselTitles[slideIndex].classList.add("display-slide");
+      allCarouselImg.length &&
+        allCarouselImg[slideIndex].classList.add("display-slide");
+      allCarouselTitles.length &&
+        allCarouselTitles[slideIndex].classList.add("display-slide");
       intervalId = setInterval(nextSlide, 6000);
     };
-    
 
     // Pause auto-slide on mouse hover
     carousel.addEventListener("mouseover", () => clearInterval(intervalId));
@@ -138,13 +159,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Handle post click events to navigate to the full post page
     cards.addEventListener("click", (event) => {
-      const postID = event.target.classList.contains("manage-post-btn") 
-        ? event.target.getAttribute("data-class") 
+      const postID = event.target.classList.contains("manage-post-btn")
+        ? event.target.getAttribute("data-class")
         : event.target.closest(".post-card")?.id;
-    
-      postID && (window.location.href = `/post/${event.target.classList.contains("manage-post-btn") ? "edit" : "index"}.html?id=${postID}`);
+
+      postID &&
+        (window.location.href = `/post/${
+          event.target.classList.contains("manage-post-btn") ? "edit" : "index"
+        }.html?id=${postID}`);
     });
-    
+
     // Display message if no blog posts are found
     if (!cards.innerHTML) {
       cards.innerHTML = "<p>No posts found.</p>";

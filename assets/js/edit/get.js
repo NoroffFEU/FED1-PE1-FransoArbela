@@ -42,21 +42,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         event.preventDefault();
         const target = event.target;
         const postID = target.getAttribute("data-class") || target.closest(".post-card")?.id;
-
-        if (target.classList.contains("manage-post-btn") || target.closest(".post-card")) {
-          window.location.href = `/post/edit.html?id=${postID}`;
-          return;
+    
+        // Handle delete post
+        if (target.classList.contains("delete-post-btn")) {
+            if (confirm("Are you sure you want to delete this post?")) {
+                deletePost(postID);
+            }
+            return; 
         }
-
-        if (target.classList.contains("delete-post-btn") && confirm("Are you sure you want to delete this post?")) {
-          deletePost(postID);
-          return;
+    
+        // Handle edit
+        if (target.classList.contains("manage-post-btn")) {
+            window.location.href = `/post/edit.html?id=${postID}`;
+            return;
         }
-      });
-
-      if (!cards.innerHTML.trim()) {
+    
+        // Handle normal post card clicks
+        if (target.closest(".post-card")) {
+            window.location.href = `/post/index.html?id=${postID}`;
+        }
+    });
+    
+    // Check if there are no posts and display message
+    if (!cards.innerHTML.trim()) {
         cards.innerHTML = "<p>No posts found.</p>";
-      }
+    }
+    
     } else {
       console.error(
         "Failed to fetch blog posts:",

@@ -178,6 +178,30 @@
   font-family: var(--secondary-font);
 }
 
+.manage-post-btn, .delete-post-btn {
+  padding: 0.5rem;
+  border: 0;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.manage-post-btn {
+  background-color: rgba(128, 128, 128, 0.831);
+  color: white;
+}
+
+.manage-post-btn:hover {
+  background-color: rgb(61, 61, 61);
+}
+
+.delete-post-btn {
+  background-color: rgba(204, 0, 0, 0.721);
+  color: white;
+}
+.delete-post-btn:hover {
+  background-color: rgb(146, 0, 0);
+}
 /* ================= FOOTER ================= */
 
 /* Button container layout */
@@ -199,6 +223,7 @@
   font-family: var(--secondary-font);
   background-color: white;
   color: var(--read-more-color);
+  border: 0;
 }
 
 /* Hover effect for read more button */
