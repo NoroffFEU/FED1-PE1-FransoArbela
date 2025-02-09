@@ -21,10 +21,12 @@
   </head>
   <header>
     <menu>
-      <!-- logo -->
-      <div id="logo">
-        <img src="/assets/images/Logo.png" alt="" />
-      </div>
+        <!-- logo -->
+        <div id="logo">
+          <a href="/">
+            <img src="/assets/images/Logo.png" alt="" />
+          </a>
+        </div>
       <!-- nav -->
       <nav>
         <ul>
@@ -48,7 +50,7 @@
           <li><a href="/">Home</a></li>
           <li><a href="/post/blog-feed.html">Blog</a></li>
           <li>
-            <a id="offscreen-loginBtn" href="/account/login.html">Log in</a>
+            <a .primary-button id="offscreen-loginBtn" href="/account/login.html">Log in</a>
           </li>
           <li>
             <a id="offscreen-registerBtn" href="/account/register.html"
@@ -63,7 +65,15 @@
     <!-- main content -->
     <main>
       <section>
-        <h3>circle</h3>
+        <h1 class="blog-hero-title">Blog feed</h1>
+      </section>
+      <section>
+        <div class="carousel-wrapper">
+          <button class="prev">&#10094</button>
+          <button class="next">&#10095</button>
+          <div class="carousel">
+          </div>
+        </div>
       </section>
       <section>
         <label for="search">search</label>
@@ -78,7 +88,7 @@
         </select>
       </section>
       <section>
-        <div id="postsContainer"></div>
+          <div id="cards"></div>
       </section>
     </main>
     <footer>

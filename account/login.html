@@ -25,7 +25,9 @@
       <menu>
         <!-- logo -->
         <div id="logo">
-          <img src="/assets/images/Logo.png" alt="" />
+          <a href="/">
+            <img src="/assets/images/Logo.png" alt="" />
+          </a>
         </div>
         <!-- nav -->
         <nav>
@@ -61,29 +63,33 @@
         </div>
       </menu>
     </header>
-    <main class="login-register-container">
-      <div class="input-wrapper">
-        <h1>Login</h1>
-        <form class="login-form">
-          <label for="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
-          <label for="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            required
-          />
-          <button class="login" type="submit">Log in</button>
-          <a id="direct-to-register" href="/account/register.html">Don't have an account?</a>
-
-        </form>
-      </div>
+    <main>
+      <section class="login-register-container">
+        
+        <div class="input-wrapper">
+          <h1>Login</h1>
+          <form class="login-form">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+            <label for="password">Password:</label>
+            <input 
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+            <button class="login primary-button" type="submit">Log in</button>
+            <a id="direct-to-register" href="/account/register.html"
+              >Don't have an account?</a
+            >
+          </form>
+        </div>
+      </section>
     </main>
     <footer>
       <p>&copy; 2025 HotView Labs . All rights reserved.</p>

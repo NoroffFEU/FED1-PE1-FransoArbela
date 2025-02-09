@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (response.ok) {
       const blogPosts = await response.json();
 
-      const postsContainer = document.querySelector("#postsContainer");
+      const cards = document.querySelector("#cards");
       blogPosts.data.forEach((post) => {
         const postElement = document.createElement("div");
         postElement.className = "post-card";
@@ -35,36 +35,27 @@ document.addEventListener("DOMContentLoaded", async () => {
             <button class="manage-post-btn" data-class="${post.id}">Edit</button>
             <button class="delete-post-btn" data-class="${post.id}">Delete</button>
           </div>
-        `;    postsContainer.appendChild(postElement);
+        `;    cards.appendChild(postElement);
       });
 
-      postsContainer.addEventListener("click", (event) => {
+      cards.addEventListener("click", (event) => {
         event.preventDefault();
-        if (event.target.classList.contains("manage-post-btn")) {
-          const postID = event.target.getAttribute("data-class");
+        const target = event.target;
+        const postID = target.getAttribute("data-class") || target.closest(".post-card")?.id;
+
+        if (target.classList.contains("manage-post-btn") || target.closest(".post-card")) {
           window.location.href = `/post/edit.html?id=${postID}`;
           return;
         }
 
-        if (event.target.classList.contains("delete-post-btn")) {
-          const isConfirmed = confirm(
-            "Are you sure you want to delete this post?"
-          );
-          if (isConfirmed) {
-            const postID = event.target.getAttribute("data-class");
-            deletePost(postID);
-            return;
-          }
-        }
-        if (event.target.closest(".post-card")) {
-          const postID = event.target.closest(".post-card").id;
-          window.location.href = `/post/edit.html?id=${postID}`;
+        if (target.classList.contains("delete-post-btn") && confirm("Are you sure you want to delete this post?")) {
+          deletePost(postID);
           return;
         }
       });
 
-      if (postsContainer.innerHTML === "") {
-        postsContainer.innerHTML = "<p>No posts found.</p>";
+      if (!cards.innerHTML.trim()) {
+        cards.innerHTML = "<p>No posts found.</p>";
       }
     } else {
       console.error(

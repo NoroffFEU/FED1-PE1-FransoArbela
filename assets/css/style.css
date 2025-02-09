@@ -11,6 +11,17 @@ body.no-scroll {
   overflow: hidden;
 }
 
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+  "header"
+  "main"
+  "footer";
+  gap: 2rem;
+  align-content: space-between;
+}
+
 /* header */
 header {
   display: flex;
@@ -20,6 +31,7 @@ header {
   box-shadow: var(--box-shadow);
   max-height: 4rem;
   position: relative;
+  grid-area: header;
 }
 
 menu {
@@ -70,7 +82,7 @@ li a:active {
   align-items: center;
 }
 
-button,
+.primary-button,
 .secondary-button {
   border-radius: 4px;
   background: var(--primary-button);
@@ -96,12 +108,39 @@ button,
   padding: 0.5rem 1rem;
 }
 
-h3 {
-  font-size: 1.5rem;
+
+/* main */
+
+main {
+  grid-area: main;
+  max-width: 100%;
 }
 
-/* burger menu */
+section {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 1rem 0;
+}
 
+
+section p {
+  max-width: 67ch;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+  word-spacing: 0.08em;
+  text-rendering: optimizeLegibility;
+}
+
+#text-bold {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+
+/* burger menu */
 .offscreen-menu {
   background-color: rgb(45, 53, 108);
   height: 100vh;
@@ -205,11 +244,11 @@ h1 {
   height: fit-content;
 }
 
-p {
+/* p {
   color: rgb(61, 61, 61);
   min-height: 3.51rem;
   font-family: var(--secondary-font);
-}
+} */
 
 form {
   width: fit-content;
@@ -220,9 +259,13 @@ form {
   gap: 1rem;
 }
 
+.img-wrapper {
+  background-color: rgba(94, 153, 199, 0.34);
+  max-width: 680px;
+}
+
 #hero-img {
-  width: 50%;
-  max-height: 35rem;
+  max-width: 100%;
   object-fit: cover;
   margin-bottom: 2rem;
 }
@@ -233,44 +276,21 @@ form {
   margin-bottom: 1rem;
 }
 
-/* main page styling */
-section {
-  padding: 0 1rem;
-}
-section p {
-  max-width: 67ch;
-  font-size: 1.125rem;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-  letter-spacing: 0.03em;
-  word-spacing: 0.08em;
-  text-rendering: optimizeLegibility;
-}
 
-#text-bold {
-  font-weight: bold;
-  font-size: 1.8rem;
-}
 
 /* footer */
 footer {
   background-color: #373737;
   height: 20rem;
-  margin-top: 4rem;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-}
-
-main {
-  padding: 4rem 0 8rem 0;
+  grid-area: footer;
 }
 
 footer p {
   color: whitesmoke;
 }
-
-
 
 @media (max-width: 685px) {
   nav{

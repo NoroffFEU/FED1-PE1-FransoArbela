@@ -1,45 +1,170 @@
-#postsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin: 0 auto;
-  max-width: 75vw;
-  padding: 4rem 1rem;
-  background-color: rgba(127, 255, 212, 0.356);
+/* ================= HEADER ================= */
+
+/* Carousel wrapper containing the image slider */
+.carousel-wrapper {
+  position: relative;
+  padding: 1rem 4rem;
 }
 
+/* Main carousel container */
+.carousel {
+  display: flex;
+  overflow: hidden;
+  background-color: rgb(91, 142, 142);
+  max-width: 40rem;
+  max-height: 30rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: var(--border-radius);
+  position: relative;
+}
 
+/* Adds shadow and scaling effect on hover */
+.carousel:hover {
+  box-shadow: 0 8px 32px rgba(44, 81, 166, 0.751);
+  transform: scale(1.01);
+}
+
+/* Left and right navigation buttons inside the carousel */
+.carousel-wrapper button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Styling for carousel headings inside the images */
+.carousel h1 {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(10px); /* Start slightly lower */
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  z-index: 2;
+  text-align: start;
+}
+
+/* Styling for carousel images */
+.carousel img {
+  width: 100%;
+  object-fit: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transform: scale(1.05);
+}
+/* Display active carousel title and image */
+.carousel h1.display-slide {
+  opacity: 1;
+  transform: translateY(0);
+}
+.carousel img.display-slide {
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
+}
+
+/* Navigation button positions */
+.carousel-wrapper .prev {
+  left: 10px;
+}
+.carousel-wrapper .next {
+  right: 10px;
+}
+
+/* Navigation button styling */
+.carousel-wrapper .prev,
+.carousel-wrapper .next {
+  border: none;
+  background-color: rgba(44, 44, 44, 0.61);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+/* Hover effect for navigation buttons */
+.prev:hover,
+.next:hover {
+  background-color: rgba(115, 126, 150, 0.386);
+  color: rgb(43, 43, 43);
+}
+
+.carousel p {
+  background-color: rgb(2, 83, 133);
+  position: absolute;
+  color: whitesmoke;
+  padding: 0.5rem;
+  top: 0rem;
+  right: 1rem;
+  text-align: center;
+  border-radius: var(--border-radius);
+  font-size: 0.8rem;
+}
+
+/* ================= MAIN CONTENT ================= */
+
+/* Blog feed grid layout */
+#cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Blog post card styling */
 .post-card {
   display: flex;
   cursor: pointer;
   flex-direction: column;
-  padding: 1rem;
   gap: 1rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: all 0.2s ease-in-out;
-  width: 250px;
+  max-width: 325px;
   justify-content: space-between;
+  padding: 1rem;
 }
 
+/* Adds hover effect on blog post cards */
 .post-card:hover {
   box-shadow: var(--box-shadow-hover);
   transform: scale(1.02);
 }
 
+/* Blog post image styling */
 .post-card img {
   width: 100%;
-  height: 200px;
+  max-height: 200px;
   object-fit: cover;
   border-radius: var(--border-radius);
 }
 
+/* Blog post title styling */
 #blog-feed-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgb(0, 0, 0);
   padding-bottom: 1rem;
 }
 
+/* Blog post paragraph (truncated text effect) */
 #blog-feed-p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -49,8 +174,13 @@
   line-clamp: 3;
   line-height: 117.305%;
   font-weight: 400;
+  font-size: 1rem;
+  font-family: var(--secondary-font);
 }
 
+/* ================= FOOTER ================= */
+
+/* Button container layout */
 .button-container {
   width: 100%;
   padding-top: 1rem;
@@ -59,6 +189,7 @@
   gap: 1rem;
 }
 
+/* Read more button styling */
 .read-more {
   background-color: var(--read-more-bg-color);
   width: fit-content;
@@ -70,6 +201,39 @@
   color: var(--read-more-color);
 }
 
+/* Hover effect for read more button */
 .read-more:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 685px) {
+  .carousel-wrapper {
+     padding: 0;
+  }
+  .carousel {
+    max-width: 50rem;
+  }
+  .carousel-wrapper .prev  {
+    left: 0rem;
+  }
+  .carousel-wrapper .next  {
+    right: 0rem;
+  }
+  .carousel-wrapper .next,
+  .carousel-wrapper .prev {
+    height: 40%;
+    z-index: 2;
+    border-radius: var(--border-radius);
+  }
+  .blog-hero-title {
+    align-self: start;
+    padding: 0 1rem 1rem;
+  }
+
+}
+@media (max-width: 460px) {
+  .carousel h1 {
+    font-size: 1rem;
+  }
+
 }

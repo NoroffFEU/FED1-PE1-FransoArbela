@@ -4,11 +4,9 @@
   align-items: center;
   width: 100%;
   flex-direction: column;
-  margin-bottom: 10rem;
 }
 
 .input-wrapper {
     box-shadow: var(--box-shadow);
-    padding: 2rem;
 }
 

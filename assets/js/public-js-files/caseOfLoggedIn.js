@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // create a log out button when user is logged in
     const createLogoutButton = () => {
       const button = document.createElement("button");
-      button.className = "logout";
+      button.className = "logout primary-button";
       button.textContent = "Log out";
       return button;
     };
