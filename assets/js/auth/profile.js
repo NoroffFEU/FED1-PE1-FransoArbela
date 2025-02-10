@@ -11,9 +11,12 @@ const createNewPostPage = document.querySelector("#createNewPostPage");
 document.addEventListener("DOMContentLoaded", async (event) => {
   const apiKey = localStorage.getItem("apiKey");
   const accessToken = localStorage.getItem("accessToken");
+
   const loginDataString = localStorage.getItem("loginData");
+
   const loginData = JSON.parse(loginDataString);
   const authorName = loginData.data.name;
+
   const AuthorEmail = loginData.data.email;
   const AuthorProfilePic = loginData.data.banner.url;
   const AuthorAvatar = loginData.data.avatar.url;
@@ -57,3 +60,5 @@ createNewPostPage.addEventListener("click", (event) => {
   event.preventDefault();
   window.location.href = "/pages/manage-posts.html";
 });
+
+

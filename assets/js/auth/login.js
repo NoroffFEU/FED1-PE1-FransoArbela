@@ -48,6 +48,7 @@ submit.addEventListener("click", (event) => {
 
       const loginData = await loginResponse.json();
       const loginDataString = JSON.stringify(loginData);
+      console.log(loginData)
 
       // push to local storage
       localStorage.setItem("loginData", loginDataString);
@@ -75,17 +76,14 @@ submit.addEventListener("click", (event) => {
         body: JSON.stringify(apiKeyPayload),
       });
 
-      window.location.href = "/pages/profile.html";
+      // window.location.href = "/pages/profile.html";
       if (!apiKeyResponse.ok) {
         throw new Error(
           "API Key creation failed: " + (await apiKeyResponse.text())
         );
       }
       const apiKeyData = await apiKeyResponse.json();
-      console.log("API Key created successfully:", apiKeyData);
-
       localStorage.setItem("apiKey", apiKeyData.data.key);
-      console.log("API Key:", apiKeyData.data.key);
     } catch (error) {
       console.error("Error:", error);
     }
