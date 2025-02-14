@@ -4,95 +4,96 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <script
-      type="module"
-      src="/assets/js/public-js-files/blog-feed.js"
-      defer
-    ></script>
-    <script
-      type="module"
-      src="/assets/js/public-js-files/caseOfLoggedIn.js"
-      defer
-    ></script>
-    <script type="module" src="/assets/js/main.js" defer></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/css-pages/blog-feed.css">
 
-    <title>Blog feed</title>
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/public-js-files/blog-feed.js"></script>
+    <script type="module" src="/assets/js/scriptComponents/caseOfLoggedIn.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
+
+    <title>Blog Feed</title>
   </head>
-  <header>
-    <menu>
-        <!-- logo -->
+  <body>
+    <header>
+      <nav>
+        <!-- Logo -->
         <div id="logo">
           <a href="/">
-            <img src="/assets/images/Logo.png" alt="" />
+            <img src="/assets/images/Logo.png" alt="HotView Labs Logo" />
           </a>
         </div>
-      <!-- nav -->
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/post/blog-feed.html">Blog</a></li>
-          <li>
-            <a id="registerBtn" href="/account/register.html">Register</a>
-          </li>
-          <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
-        </ul>
+        <div class="nav-element-wrapper">
+          <!-- Navigation -->
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post/blog-feed.html">Blog</a></li>
+            <li>
+              <a id="registerBtn" href="/account/register.html">Register</a>
+            </li>
+            <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
+          </ul>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="offscreen-menu">
+          <ul class="offscreen-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/post/blog-feed.html">Blog</a></li>
+            <li>
+              <a id="offscreen-loginBtn" href="/account/login.html">Log in</a>
+            </li>
+            <li>
+              <a id="offscreen-registerBtn" href="/account/register.html"
+                >Register</a
+              >
+            </li>
+          </ul>
+        </div>
       </nav>
-      <!-- this menu appears for the smaller screens -->
-      <div class="burger-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    </header>
 
-      <div class="offscreen-menu">
-        <ul class="offscreen-nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/post/blog-feed.html">Blog</a></li>
-          <li>
-            <a .primary-button id="offscreen-loginBtn" href="/account/login.html">Log in</a>
-          </li>
-          <li>
-            <a id="offscreen-registerBtn" href="/account/register.html"
-              >Register</a
-            >
-          </li>
-        </ul>
-      </div>
-    </menu>
-  </header>
-  <body>
-    <!-- main content -->
+    <!-- Main Content -->
     <main>
       <section>
-        <h1 class="blog-hero-title">Blog feed</h1>
+        <h1 class="blog-hero-title">Blog Feed</h1>
       </section>
       <section>
         <div class="carousel-wrapper">
-          <button class="prev">&#10094</button>
-          <button class="next">&#10095</button>
-          <div class="carousel">
-          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+          <div class="carousel"></div>
         </div>
       </section>
+
+      <!-- Search -->
       <section>
-        <label for="search">search</label>
-        <input type="search" name="search" id="search" placeholder="search" />
+        <label for="search">Search</label>
+        <input type="search" name="search" id="search" placeholder="Search" autocomplete="off" />
+      </section>
+
+      <!-- Filter -->
+      <section>
+        <label for="filter">Filter</label>
+        <select id="filter">
+          <option value="all">All</option>
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+        </select>
       </section>
 
       <section>
-        <select name="" id="">
-          <option value="all">All</option>
-          <option value="latest">Latest</option>
-          <option value="al">Oldest</option>
-        </select>
-      </section>
-      <section>
-          <div id="cards"></div>
+        <div id="cards"></div>
       </section>
     </main>
+
     <footer>
-      <p>&copy; 2025 HotView Labs . All rights reserved.</p>
+      <p>&copy; 2025 HotView Labs. All rights reserved.</p>
     </footer>
   </body>
 </html>

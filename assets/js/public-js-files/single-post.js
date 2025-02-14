@@ -1,9 +1,7 @@
-import { getUsername } from "./caseOfLoggedIn.js";
+import { getUsername } from "../scriptComponents/caseOfLoggedIn.js";
 // get link later
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
-
-
 
 const username = getUsername();
 
@@ -21,22 +19,27 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (response.ok) {
       const blogPosts = await response.json();
-      const fullBlog = document.querySelector(".expanded-post-container");
+      const fullBlog = document.querySelector(".single-post");
 
       const post = blogPosts.data;
       // Generate post
       const postElement = document.createElement("div");
       postElement.className = "full-blog-post";
-    postElement.innerHTML = `
+      postElement.innerHTML = `
       <h1 id="blog-feed-title">${post.title}</h1>
-      <p id="blog-feed-author">Author: ${post.author.name}</p>
-      <div id="blog-feed-dates">
-        <p>Published: ${new Date(post.created).toLocaleDateString()}</p>
-        <p>Last updated: ${new Date(post.updated).toLocaleDateString()}</p>
-      </div>
+      <h5 id="blog-feed-author">Author: ${post.author.name}</h5>
+
       <img src="${post.media?.url || ""}" alt="${post.media?.alt || "Image"}" />
+
       <p id="blog-feed-body">${post.body}</p>
-      <p id="blog-feed-tags">Tags: ${post.tags.join(", ")}</p>
+
+      <div class="post-details">
+      <h5 id="blog-feed-tags">Tags: ${post.tags.join(", ")}</h5>
+      <div id="blog-feed-dates">
+        <h5 id="date">Published: ${new Date(post.created).toLocaleDateString()}</h5>
+        <h5 id="date">Last updated: ${new Date(post.updated).toLocaleDateString()}</h5>
+      </div>
+      </div>
     `;
       fullBlog.appendChild(postElement);
 

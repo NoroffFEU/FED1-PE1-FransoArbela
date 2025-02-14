@@ -1,8 +1,7 @@
-import { getUsername } from "./caseOfLoggedIn.js"; // Import function to get the logged-in user's username
+import { getUsername } from "../scriptComponents/caseOfLoggedIn.js"; // Import function to get the logged-in user's username
+// import {searchPosts} from "../scriptComponents/search.js"
 
-const searchInput = document.querySelector("#search"); // Select the search input field
-
-// Fetch blog posts and display them in the blog feed
+//=================================== Fetch blog posts and display them in the blog feed
 document.addEventListener("DOMContentLoaded", async () => {
   const username = getUsername(); // Get the current user's username
 
@@ -28,27 +27,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const blogPosts = await response.json(); // Parse JSON response
+    const blogData = blogPosts.data;
     const cards = document.querySelector("#cards"); // Select blog post container
     const carousel = document.querySelector(".carousel"); // Select carousel container
 
-    // Generate blog images for the carousel
-    blogPosts.data.forEach((post, index) => {
+    //================================ Generate blog images for the carousel
+    blogData.forEach((post) => {
       const carouselImgAndTitle = document.createElement("div");
       carouselImgAndTitle.classList.add("carousel-posts");
-      carouselImgAndTitle.id = `${post.id}`; // Assign ID to the div itself
+      carouselImgAndTitle.id = `${post.id}`;
 
       carouselImgAndTitle.innerHTML = `
       <h1 class="carousel-titles">${post.title}</h1>
       <img class="carousel-images" src="${post.media?.url}" alt="${post.media?.alt}">
   `;
-
       carousel.appendChild(carouselImgAndTitle);
     });
 
-    // Select all carousel items after they are added to the DOM
-    const allCarouselItems = document.querySelectorAll(".carousel-posts");
-
-    // Redirect only when clicking the **currently displayed** slide
+    // Redirect only when clicking the currently displayed slide
     carousel.addEventListener("click", () => {
       const currentSlide = document.querySelector(
         ".carousel-images.display-slide"
@@ -73,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.location.href = `/post/index.html?id=${postID}`;
     });
 
-    // Initialize carousel functionality
+    //=================================== Initialize carousel functionality
     const allCarouselImg = document.querySelectorAll(".carousel-images");
     const allCarouselTitles = document.querySelectorAll(".carousel-titles");
 
@@ -135,41 +131,79 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     autoDisplayImgs(); // Start auto-slide
 
-    // Generate blog post cards
-    blogPosts.data.forEach((post) => {
-      const postElement = document.createElement("div");
-      postElement.className = "post-card";
-      postElement.id = `${post.id}`;
-      postElement.innerHTML = `
-        <div>
-          <img src="${post.media?.url || ""}" alt="${
-        post.media?.alt || "Image"
-      }" />
-          <h3 id="blog-feed-title">${post.title}</h3>
-          <p id="blog-feed-p">${post.body}</p>
-        </div>
-        <div class="read-more-button-container">
-          <button class="read-more" data-class="${
-            post.id
-          }">Read more...</button>
-        </div>
-      `;
-      cards.appendChild(postElement);
+    //========================= Search blog post cards
+    const searchInput = document.querySelector("#search"); // Select the search input field
+
+    searchInput.addEventListener("input", () => {
+      const searchTerm = searchInput.value; // Convert input to lowercase for case-insensitive search
+
+      const result = blogData
+        .map((item) => {
+          const content = [item.title, item.tags.join(", ")];
+
+          const score = content
+            .map((value) => value.toLocaleLowerCase())
+            .reduce((score, value) => {
+              if (value.includes(searchTerm.toLocaleLowerCase())) {
+                return score + 1;
+              }
+              return score;
+            }, 0);
+          return {
+            ...item,
+            score,
+          };
+        })
+        .filter((item) => item.score > 0)
+        .sort((a, b) => b.score - a.score);
+
+      posts(result);
     });
 
-    // Handle post click events to navigate to the full post page
-    cards.addEventListener("click", (event) => {
-      const postID = event.target.classList.contains("manage-post-btn")
-        ? event.target.getAttribute("data-class")
-        : event.target.closest(".post-card")?.id;
+    //========================= Generate blog post cards
 
-      postID &&
-        (window.location.href = `/post/${
-          event.target.classList.contains("manage-post-btn") ? "edit" : "index"
-        }.html?id=${postID}`);
-    });
+    const posts = (filteredPosts) => {
+      cards.innerHTML = "";
+      const postList = filteredPosts.length > 0 ? filteredPosts : blogData;
 
-    // Display message if no blog posts are found
+      postList.forEach((post) => {
+        const postElement = document.createElement("div");
+        postElement.className = "post-card";
+        postElement.id = `${post.id}`;
+        postElement.innerHTML = `
+          <div>
+            <img src="${post.media?.url || ""}" alt="${
+          post.media?.alt || "Image"
+        }" />
+            <h3 id="blog-feed-title">${post.title}</h3>
+            <p id="blog-feed-p">${post.body}</p>
+          </div>
+          <div class="read-more-button-container">
+            <button class="read-more" data-class="${
+              post.id
+            }">Read more...</button>
+          </div>
+        `;
+        cards.appendChild(postElement);
+      });
+
+      // Handle post click events to navigate to the full post page
+      cards.addEventListener("click", (event) => {
+        const postID = event.target.classList.contains("manage-post-btn")
+          ? event.target.getAttribute("data-class")
+          : event.target.closest(".post-card")?.id;
+
+        if (postID) {
+          window.location.href = `/post/${
+            event.target.classList.contains("manage-post-btn")
+              ? "edit"
+              : "index"
+          }.html?id=${postID}`;
+        }
+      });
+    };
+    posts(blogData);
+    //============================ Display message if no blog posts are found
     if (!cards.innerHTML) {
       cards.innerHTML = "<p>No posts found.</p>";
     }

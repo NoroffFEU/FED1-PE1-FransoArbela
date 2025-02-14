@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             <p id="blog-feed-p">${post.body}</p>
           </div>
           <div class="button-container">
-            <button class="manage-post-btn" data-class="${post.id}">Edit</button>
+            <button class="edit-btn" data-class="${post.id}">Edit</button>
             <button class="delete-post-btn" data-class="${post.id}">Delete</button>
           </div>
         `;    cards.appendChild(postElement);
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     
         // Handle edit
-        if (target.classList.contains("manage-post-btn")) {
+        if (target.classList.contains("edit-btn")) {
             window.location.href = `/post/edit.html?id=${postID}`;
             return;
         }

@@ -1,6 +1,7 @@
 const title = document.querySelector("#create-new-post-title");
 const body = document.querySelector("#create-new-post-body");
 const img = document.querySelector("#create-new-post-img");
+const tags = document.querySelector("#create-new-post-tag");
 const createNewPost = document.querySelector("#create-new-post");
 
 //
@@ -18,7 +19,7 @@ createNewPost.addEventListener("click", async (event) => {
   const data = {
     title: title.value,
     body: body.value,
-    tags: ["example", "blog", "API"],
+    tags: [tags.value],
     media: {
       url: img.value,
       alt: "An example image",
@@ -39,11 +40,12 @@ createNewPost.addEventListener("click", async (event) => {
       alert("New Post Created");
       window.location.href = "/pages/profile.html"; // Redirect to posts page
     } else {
-      console.error(
-        "Failed to create blog post:",
-        response.status,
-        await response.text()
-      );
+      const errorTitle = document.querySelector("#title-error")
+      const errorImg = document.querySelector("#img-error")
+      const responseText = await response.json();
+      responseText.errors.forEach((error) => {
+        console.log(error.message);
+      });
     }
   } catch (error) {
     console.error("Error:", error);

@@ -1,0 +1,82 @@
+/* Blog feed grid layout */
+#cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+    gap: 2rem;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  /* Blog post card styling */
+  .post-card {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 0.2s ease-in-out;
+    max-width: 325px;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  
+  /* Adds hover effect on blog post cards */
+  .post-card:hover {
+    box-shadow: var(--box-shadow-hover);
+    transform: scale(1.02);
+  }
+  
+  /* Blog post image styling */
+  .post-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+  }
+  
+  /* Blog post title styling */
+  #blog-feed-title {
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    padding-bottom: 1rem;
+  }
+  
+  /* Blog post paragraph (truncated text effect) */
+  #blog-feed-p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    line-height: 117.305%;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: var(--secondary-font);
+  }
+
+  .edit-btn, .delete-post-btn {
+    padding: 0.5rem;
+    border: 0;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .edit-btn {
+    background-color: rgba(128, 128, 128, 0.831);
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: rgb(61, 61, 61);
+  }
+  
+  .delete-post-btn {
+    background-color: rgba(204, 0, 0, 0.721);
+    color: white;
+  }
+  .delete-post-btn:hover {
+    background-color: rgb(146, 0, 0);
+  }

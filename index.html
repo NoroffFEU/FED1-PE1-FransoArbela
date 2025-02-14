@@ -8,29 +8,30 @@
       href="/assets/images/favicon.png"
       type="image/x-icon"
     />
-    <!-- css -->
+    <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/css-pages/home.css">
+
+    <!-- Scripts -->
     <script
       type="module"
-      src="/assets/js/public-js-files/caseOfLoggedIn.js"
-      defer
+      src="/assets/js/scriptComponents/caseOfLoggedIn.js"
     ></script>
-    <script type="module" src="/assets/js/main.js" defer></script>
+    <script type="module" src="/assets/js/main.js"></script>
 
-    <!-- scripts -->
     <title>Home</title>
   </head>
   <body>
     <header>
-      <menu>
-        <!-- logo -->
+      <nav>
+        <!-- Logo -->
         <div id="logo">
           <a href="/">
-            <img src="/assets/images/Logo.png" alt="" />
+            <img src="/assets/images/Logo.png" alt="HotView Labs Logo" />
           </a>
         </div>
-        <!-- nav -->
-        <nav>
+        <div class="nav-element-wrapper">
+          <!-- Navigation -->
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/post/blog-feed.html">Blog</a></li>
@@ -39,8 +40,8 @@
             </li>
             <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
           </ul>
-        </nav>
-        <!-- this menu appears for the smaller screens -->
+        </div>
+        <!-- Mobile Menu -->
         <div class="burger-menu">
           <span></span>
           <span></span>
@@ -58,13 +59,12 @@
                 >Register</a
               >
             </li>
-
           </ul>
         </div>
-      </menu>
+      </nav>
     </header>
-    <main>
 
+    <main>
       <section>
         <h1 id="hero-title">HotView Labs</h1>
         <p id="about-us-p">
@@ -74,7 +74,11 @@
           up-to-date insights that drive innovation in the tech world.
         </p>
         <div class="img-wrapper">
-          <img id="hero-img" src="/assets/images/hero-img.jpg" alt="" />
+          <img
+            id="hero-img"
+            src="/assets/images/hero-img.jpg"
+            alt="Tech Research"
+          />
         </div>
         <p id="about-us-p">
           With a dedicated team of 30 expert analysts, we explore emerging
@@ -109,9 +113,10 @@
         </p>
       </section>
     </main>
-    <!-- footer -->
+
+    <!-- Footer -->
     <footer>
-      <p>&copy; 2025 HotView Labs . All rights reserved.</p>
+      <p>&copy; 2025 HotView Labs. All rights reserved.</p>
     </footer>
   </body>
 </html>

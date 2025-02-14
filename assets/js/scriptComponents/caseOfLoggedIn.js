@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // change the login button to the author's name
     const authorName = loginData.data.name;
 
-    const nav = document.querySelector("nav");
+    const navElementWrapper = document.querySelector(".nav-element-wrapper");
     const offScreenNav = document.querySelector(".offscreen-nav");
 
     // create a log out button when user is logged in
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     offScreenNav?.appendChild(createLogoutButton());
-    nav?.appendChild(createLogoutButton()); 
+    navElementWrapper?.appendChild(createLogoutButton()); 
 
     // change the log in text to the authors name
     // and the direction path to profile instead of log in page

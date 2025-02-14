@@ -4,32 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/scriptComponents/caseOfLoggedIn.js"></script>
+    <script type="module" src="/assets/js/public-js-files/single-post.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
 
-    <script
-      type="module"
-      src="/assets/js/public-js-files/caseOfLoggedIn.js"
-      defer
-    ></script>
-    <script
-      type="module"
-      src="/assets/js/public-js-files/expanded-blog.js"
-      defer
-    ></script>
-    <script type="module" src="/assets/js/main.js" defer></script>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/css-pages/single-post.css">
     <title>Blog</title>
   </head>
   <body>
     <header>
-      <menu>
-        <!-- logo -->
+      <nav>
+        <!-- Logo -->
         <div id="logo">
           <a href="/">
-            <img src="/assets/images/Logo.png" alt="" />
+            <img src="/assets/images/Logo.png" alt="HotView Labs Logo" />
           </a>
         </div>
-        <!-- nav -->
-        <nav>
+        <div class="nav-element-wrapper">
+          <!-- Navigation -->
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/post/blog-feed.html">Blog</a></li>
@@ -38,14 +34,13 @@
             </li>
             <li><a id="loginBtn" href="/account/login.html">Log in</a></li>
           </ul>
-        </nav>
-        <!-- this menu appears for the smaller screens -->
+        </div>
+        <!-- Mobile Menu -->
         <div class="burger-menu">
           <span></span>
           <span></span>
           <span></span>
         </div>
-
         <div class="offscreen-menu">
           <ul class="offscreen-nav">
             <li><a href="/">Home</a></li>
@@ -60,15 +55,17 @@
             </li>
           </ul>
         </div>
-      </menu>
+      </nav>
     </header>
+    
     <main>
       <section>
-        <div class="expanded-post-container"></div>
+        <div class="single-post"></div>
       </section>
     </main>
+    
     <footer>
-      <p>&copy; 2025 HotView Labs . All rights reserved.</p>
+      <p>&copy; 2025 HotView Labs. All rights reserved.</p>
     </footer>
   </body>
 </html>

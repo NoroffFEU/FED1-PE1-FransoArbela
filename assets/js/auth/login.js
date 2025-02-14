@@ -31,7 +31,7 @@ submit.addEventListener("click", (event) => {
     };
 
     try {
-      // Step 1: Log in and get the token
+      //Log in and get the token
       const loginResponse = await fetch(loginUrl, {
         method: "POST",
         headers: {
@@ -55,9 +55,10 @@ submit.addEventListener("click", (event) => {
 
       const token = loginData.data.accessToken;
       localStorage.setItem("accessToken", token);
+
       const autherName = loginData.data.name;
 
-      // Step 2: Use the token to authenticate second request
+      // Use the token to authenticate second request
       const apiKeyPayload = {
         data: {
           name: `${autherName}`,
@@ -75,8 +76,7 @@ submit.addEventListener("click", (event) => {
         },
         body: JSON.stringify(apiKeyPayload),
       });
-
-      // window.location.href = "/pages/profile.html";
+      window.location.href = "/pages/profile.html";
       if (!apiKeyResponse.ok) {
         throw new Error(
           "API Key creation failed: " + (await apiKeyResponse.text())

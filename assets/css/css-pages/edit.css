@@ -1,0 +1,33 @@
+#create-post-form {
+  width: 40rem;
+  padding: 2rem;
+  height: 100%;
+  display: grid;
+  grid-area: "";
+}
+
+.title,
+.body,
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+#create-new-post-title,
+#create-new-post-img {
+  height: 2rem;
+  width: 100%;
+  padding: 1rem;
+}
+#create-new-post-body {
+  min-height: 20rem;
+  width: 100%;
+  resize: none;
+  padding: 0.5rem;
+}
+
+.error-message {
+  background-color: aqua;
+  width: 100%;
+  margin: 3rem;
+}

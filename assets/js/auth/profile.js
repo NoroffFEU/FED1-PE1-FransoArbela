@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     `;
   } catch (error) {
     console.error("Error fetching profile:", error);
-    alert("Failed to load profile. Please try again.");
+    console.error("Failed to load profile. Please try again.");
     redirectToLogin();
   }
 });
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Navigation to Manage Posts page
 createNewPostPage.addEventListener("click", (event) => {
   event.preventDefault();
-  window.location.href = "/pages/manage-posts.html";
+  window.location.href = "/pages/create-post.html";
 });
 
 

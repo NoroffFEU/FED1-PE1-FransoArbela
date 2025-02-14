@@ -1,0 +1,43 @@
+.single-post {
+  padding: 0 15rem;
+}
+.single-post img {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+#blog-feed-title {
+  text-align: start;
+  font-size: 2.5rem;
+  margin-bottom:2rem ;
+}
+#blog-feed-body {
+    white-space: pre-wrap;
+}
+
+.single-post h5{
+    font-weight: 400;
+}
+#blog-feed-author {
+  font-size: 0.8rem;
+  height: fit-content;
+  margin-bottom: 1rem;
+}
+
+.single-post #date {
+  font-size: 0.8rem;
+}
+
+#blog-feed-dates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-details {
+    margin-top: 3rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    border-top: solid 1px black;
+    padding-top: 1rem;
+}

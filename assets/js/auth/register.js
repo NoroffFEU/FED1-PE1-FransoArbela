@@ -4,6 +4,7 @@ const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const submitButton = document.querySelector(".register");
 
+// register account
 async function registerUser(credentials) {
   try {
     const response = await fetch(`https://v2.api.noroff.dev/auth/register`, {
@@ -15,19 +16,19 @@ async function registerUser(credentials) {
     });
 
     const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status} - ${data.message || response.statusText}`);
+    // 2: if we get the response, we send the it data back to the function 
+    if (response.ok) {
+      return data
     }
-
-    return data; // Returns the login data
+    
   } catch (error) {
-    console.error("There was a problem with the login operation:", error);
+    console.error("There was a problem with the registeration:", error);
     return null; 
   }
 }
 
-// Event listener for the submit button
+
+// submit button
 submitButton.addEventListener("click", (event) => {
   event.preventDefault();
   const credentials = {
@@ -35,12 +36,17 @@ submitButton.addEventListener("click", (event) => {
     email: `${email.value}`,
     password: `${password.value}`,
   };
-
-  registerUser(credentials).then((data) => {
+// 1: get input value and send to registerUser function
+  registerUser(credentials).then((data, errorCode) => {
+    // 3: if data is true, alert user, if not display error
     if (data) {
-      alert("Registration successful:", data); // Log the returned data 
+      alert("Registration successful:", data);
     } else {
-      console.log("Registration failed.");
+        const displayError = document.querySelector(".displayError")
+        const errorText = document.createElement("p")
+        errorText.id = "errorText"
+        errorText.innerText= `Registeration unsuccesful please try again.`
+        displayError.appendChild(errorText)
     }
   });
 });

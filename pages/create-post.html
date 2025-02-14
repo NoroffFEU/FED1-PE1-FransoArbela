@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
     <!-- css -->
+    <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/css-pages/profile.css">
+    <link rel="stylesheet" href="/assets/css/css-pages/edit.css">
 
     <!-- Scripts -->
-    <script type="module" src="/assets/js/auth/profile.js"></script>
+    <script type="module" src="/assets/js/edit/create.js"></script>
     <script type="module" src="/assets/js/scriptComponents/caseOfLoggedIn.js"></script>
-    <script type="module" src="/assets/js/edit/profile-post-feeder.js"></script>
     <script type="module" src="/assets/js/main.js"></script>
 
-    <title>Profile</title>
+    <title>Manage Posts</title>
   </head>
   <body>
     <header>
@@ -61,13 +61,37 @@
 
     <main>
       <section>
-        <h1>User Profile</h1>
+        <form id="create-post-form">
+          <!-- Title -->
+          <div class="title">
+            <label for="create-new-post-title">Title:</label>
+            <input type="text" id="create-new-post-title" placeholder="Enter your post title" required >
+            <small id="title-error" class="error-message">title bro come on</small>
+          </div>
 
-        <button id="createNewPostPage">Create new post</button>
-        <!-- Fetching profile -->
-        <div id="profile-container"></div>
-        <!-- Fetching posts -->
-        <div id="cards"></div>
+          <!-- Body -->
+          <div class="body">
+            <label for="create-new-post-body">Body:</label>
+            <textarea id="create-new-post-body" name="create-new-post-body" placeholder="Enter your body" required></textarea>
+  
+          </div>
+          <!-- Image URL -->
+          <div class="img">
+            <label for="create-new-post-img">Image URL:</label>
+            <input type="text" id="create-new-post-img" placeholder="Enter your image URL" required >
+            <small id="img-error" class="error-message">Please come on</small>
+          </div>
+
+
+          <!-- Tag -->
+          <div class="tags">
+            <label for="create-new-post-tag">Tag:</label>
+            <input type="text" id="create-new-post-tag" placeholder="Enter your tags">
+          </div>
+
+          <!-- Create Button -->
+          <button type="submit" id="create-new-post">Create</button>
+        </form>
       </section>
     </main>
 
