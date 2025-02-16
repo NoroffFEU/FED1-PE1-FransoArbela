@@ -7,6 +7,7 @@
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- styles from edit page is applied on the form here as well -->
     <link rel="stylesheet" href="/assets/css/css-pages/edit.css">
 
     <!-- Scripts -->
@@ -61,36 +62,41 @@
 
     <main>
       <section>
+        <h1>Create post</h1>
+        <div class="displayError">
+          <ul id="list-of-errors">
+            <!-- errors will show here -->
+          </ul>
+        </div>  
+
         <form id="create-post-form">
           <!-- Title -->
           <div class="title">
-            <label for="create-new-post-title">Title:</label>
-            <input type="text" id="create-new-post-title" placeholder="Enter your post title" required >
-            <small id="title-error" class="error-message">title bro come on</small>
+            <label for="title">Title:</label>
+            <input type="text" id="title" placeholder="Enter your post title" required >
           </div>
 
           <!-- Body -->
           <div class="body">
-            <label for="create-new-post-body">Body:</label>
-            <textarea id="create-new-post-body" name="create-new-post-body" placeholder="Enter your body" required></textarea>
-  
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" placeholder="Enter your body" required></textarea>
           </div>
+
           <!-- Image URL -->
           <div class="img">
-            <label for="create-new-post-img">Image URL:</label>
-            <input type="text" id="create-new-post-img" placeholder="Enter your image URL" required >
-            <small id="img-error" class="error-message">Please come on</small>
+            <label for="img">Image URL:</label>
+            <input type="text" id="img" placeholder="Enter your image URL" required >
           </div>
 
 
           <!-- Tag -->
           <div class="tags">
-            <label for="create-new-post-tag">Tag:</label>
-            <input type="text" id="create-new-post-tag" placeholder="Enter your tags">
+            <label for="tags">Tag:</label>
+            <input type="text" id="tags" placeholder="Enter your tags">
           </div>
 
           <!-- Create Button -->
-          <button type="submit" id="create-new-post">Create</button>
+          <button type="submit" class="primary-button" id="create-new-post">Create</button>
         </form>
       </section>
     </main>

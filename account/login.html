@@ -68,12 +68,17 @@
 
     <main>
       <section class="login-register-container">
-        <div class="input-wrapper">
+
+        <div class="form-wrapper">
           <h1>Login</h1>
-          <form id="form-form">
-            <div class="displayError">
-              <p id="errorText">wrong password or email dawg</p>
-            </div>  
+
+          <div class="displayError">
+            <ul id="list-of-errors">
+              <!-- errors will show here -->
+            </ul>
+          </div>  
+
+          <form id="login-form">
             <label for="email">Email:</label>
             <input
               type="email"

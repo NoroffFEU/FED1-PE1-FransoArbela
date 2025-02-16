@@ -2,10 +2,10 @@ const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
 
 // Query selectors
-const title = document.querySelector("#create-new-post-title");
-const body = document.querySelector("#create-new-post-body");
-const img = document.querySelector("#create-new-post-img");
-const tags = document.querySelector("#blogPostTags");
+const title = document.querySelector("#title");
+const body = document.querySelector("#body");
+const img = document.querySelector("#img");
+const tags = document.querySelector("#tags");
 const edit = document.querySelector("#edit");
 
 // define the API

@@ -1,7 +1,9 @@
-const title = document.querySelector("#create-new-post-title");
-const body = document.querySelector("#create-new-post-body");
-const img = document.querySelector("#create-new-post-img");
-const tags = document.querySelector("#create-new-post-tag");
+import { displayError } from "../scriptComponents/displayError.js";
+
+const title = document.querySelector("#title");
+const body = document.querySelector("#body");
+const img = document.querySelector("#img");
+const tags = document.querySelector("#tags");
 const createNewPost = document.querySelector("#create-new-post");
 
 //
@@ -10,7 +12,6 @@ const accessToken = localStorage.getItem("accessToken");
 const loginDataString = localStorage.getItem("loginData");
 const loginData = JSON.parse(loginDataString);
 const authorName = loginData.data.name;
-const blogPostUrl = `${apiLink}/${authorName}`;
 
 createNewPost.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -36,16 +37,18 @@ createNewPost.addEventListener("click", async (event) => {
       },
       body: JSON.stringify(data),
     });
+
     if (response.ok) {
       alert("New Post Created");
       window.location.href = "/pages/profile.html"; // Redirect to posts page
     } else {
-      const errorTitle = document.querySelector("#title-error")
-      const errorImg = document.querySelector("#img-error")
-      const responseText = await response.json();
-      responseText.errors.forEach((error) => {
-        console.log(error.message);
-      });
+
+      const responseJSON = await response.json()
+      const listOFErrors = document.querySelector("#list-of-errors");
+
+      listOFErrors.innerHTML = "";
+      displayError(responseJSON.errors, listOFErrors);
+
     }
   } catch (error) {
     console.error("Error:", error);

@@ -43,16 +43,16 @@ nav {
   align-items: center;
 }
 
-ul {
+nav ul {
   display: flex;
   gap: 1rem;
 }
 
-li {
+nav li {
   list-style: none;
 }
 
-li a {
+nav li a {
   text-decoration: none;
   color: rgb(0, 0, 0);
   transition: all 0.1s ease-in-out;
@@ -60,11 +60,11 @@ li a {
   border-radius: var(--border-radius);
 }
 
-li a:hover {
+nav li a:hover {
   border-bottom: 1px solid rgba(8, 18, 53, 0.708);
 }
 
-li a:active {
+nav li a:active {
   background-color: rgba(45, 58, 101, 0.203);
 }
 
@@ -84,18 +84,21 @@ li a:active {
 .secondary-button {
   border-radius: 4px;
   background: var(--primary-button);
-  color: white;
+  color: var(--primary-text-color);
   display: flex;
-  width: 15rem;
-  height: 64px;
   padding: 15px 16px;
   justify-content: center;
   align-items: center;
   gap: 16px;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+.primary-button:hover {
+  background-color: #3882c9;
+  box-shadow: #18181885 1px 2px 8px;
+}
 .secondary-button {
   background: var(--secondary-button);
 }
@@ -161,7 +164,7 @@ section p {
 }
 
 .offscreen-menu a {
-  color: whitesmoke;
+  color: var(--primary-text-color);
 }
 
 .burger-menu {
@@ -185,7 +188,7 @@ section p {
 
 .burger-menu.is-active span:nth-child(1) {
   transform: translate(0%, 200%) rotate(-46deg);
-  background-color: whitesmoke;
+  background-color: var(--primary-text-color);
   top: 50%;
 }
 
@@ -196,7 +199,7 @@ section p {
 .burger-menu.is-active span:nth-child(3) {
   transform: translate(0%, -200%) rotate(45deg);
   top: 0%;
-  background-color: whitesmoke;
+  background-color: var(--primary-text-color);
 }
 
 
@@ -210,21 +213,34 @@ input {
 }
 
 /* Error style for inputs */
-input.error {
-  border-color: red;
+.displayError {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#list-of-errors {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 25rem;
+}
+
+#errorText {
+  background-color: var(--error-color);
+  border-radius: var(--border-radius);
+  color: var(--primary-text-color);
+  padding: 1rem 1rem;
+  list-style: none;
+  width: 100%;
 }
 
 #profile-banner {
   width: 200px;
 }
-
-h1 {
-  font-size: 2rem;
-  text-align: center;
-  margin-top: 1rem;
-  height: fit-content;
-}
-
 
 /* ========== FOOTER ========== */
 footer {
@@ -238,7 +254,7 @@ footer {
 }
 
 footer p {
-  color: whitesmoke;
+  color: var(--primary-text-color);
 }
 
 @media (max-width: 685px) {

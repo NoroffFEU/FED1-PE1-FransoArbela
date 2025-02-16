@@ -3,13 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/css-pages/edit.css">
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/css-pages/edit.css" />
 
     <!-- Scripts -->
     <script type="module" src="/assets/js/edit/edit.js"></script>
-    <script type="module" src="/assets/js/scriptComponents/caseOfLoggedIn.js"></script>
+    <script
+      type="module"
+      src="/assets/js/scriptComponents/caseOfLoggedIn.js"
+    ></script>
     <script type="module" src="/assets/js/main.js"></script>
 
     <title>Edit</title>
@@ -56,27 +64,57 @@
         </div>
       </nav>
     </header>
-    
+
     <main>
       <section>
-        <form id="create-post-form">
-          <label for="create-new-post-title">Title:</label>
-          <input type="text" id="create-new-post-title" placeholder="Enter your post title" required />
+        <!-- form for inputs -->
+        <h1>Edit</h1>
+        <form id="edit-post-form">
 
-          <label for="create-new-post-body">Body:</label>
-          <textarea id="create-new-post-body" placeholder="Enter your body" required></textarea>
+          <!-- title -->
+          <div class="title">
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              placeholder="Enter your post title"
+              required
+            />
+          </div>
 
-          <label for="create-new-post-img">Image URL:</label>
-          <input type="text" id="create-new-post-img" placeholder="Enter your image URL" required />
+          <!-- body -->
+          <div class="body">
+            <label for="body">Body:</label>
+            <textarea
+              id="body"
+              placeholder="Enter your body"
+              required
+            ></textarea>
+          </div>
 
-          <label for="blogPostTags">Tags:</label>
-          <input type="text" id="blogPostTags" placeholder="Enter tags" />
+          <!-- img -->
+          <div class="img">
+            <label for="img">Image URL:</label>
+            <input
+              type="text"
+              id="img"
+              placeholder="Enter your image URL"
+              required
+            />
+          </div>
 
-          <button type="submit" id="edit">Edit</button>
+          <!-- tags -->
+          <div class="tags">
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" placeholder="Enter tags" />
+          </div>
+
+          <!-- edit button -->
+          <button type="submit" class="primary-button" id="edit">Edit</button>
         </form>
       </section>
     </main>
-    
+
     <footer>
       <p>&copy; 2025 HotView Labs. All rights reserved.</p>
     </footer>

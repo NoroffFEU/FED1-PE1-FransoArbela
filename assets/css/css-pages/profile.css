@@ -56,6 +56,12 @@
     font-family: var(--secondary-font);
   }
 
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   .edit-btn, .delete-post-btn {
     padding: 0.5rem;
     border: 0;
@@ -65,18 +71,19 @@
   }
   
   .edit-btn {
-    background-color: rgba(128, 128, 128, 0.831);
-    color: white;
+    background-color: rgba(37, 37, 37, 0.831);
+    color: var(--primary-text-color);
   }
   
   .edit-btn:hover {
-    background-color: rgb(61, 61, 61);
+    background-color: rgb(113, 113, 113);
   }
   
   .delete-post-btn {
-    background-color: rgba(204, 0, 0, 0.721);
-    color: white;
+    background-color: rgb(146, 0, 0);
+    color: var(--primary-text-color);
   }
   .delete-post-btn:hover {
-    background-color: rgb(146, 0, 0);
+    background-color: rgba(151, 0, 0, 0.721);
+
   }

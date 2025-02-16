@@ -109,7 +109,7 @@
 .carousel p {
   background-color: rgb(2, 83, 133);
   position: absolute;
-  color: whitesmoke;
+  color: var(--primary-text-color);
   padding: 0.5rem;
   top: 0rem;
   right: 1rem;

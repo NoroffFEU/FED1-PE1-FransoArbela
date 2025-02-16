@@ -1,3 +1,6 @@
+import { displayError } from "../scriptComponents/displayError.js";
+
+// import { displayError } from "../scriptComponents/displayError.js";
 const profileContainer = document.querySelector("#profile-container");
 const loginForm = document.querySelector(".login-form");
 const emailInput = document.querySelector("#email");
@@ -18,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// submit button to log in
 submit.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -25,7 +29,7 @@ submit.addEventListener("click", (event) => {
     const loginUrl = "https://v2.api.noroff.dev/auth/login";
     const apiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
 
-    const loginPayload = {
+    const loginInput = {
       email: `${emailInput.value}`,
       password: `${passwordInput.value}`,
     };
@@ -38,52 +42,59 @@ submit.addEventListener("click", (event) => {
           "Content-Type": "application/json",
           accept: "application/json",
         },
-        body: JSON.stringify(loginPayload),
+        body: JSON.stringify(loginInput),
       });
-
-      if (!loginResponse.ok) {
-        throw new Error("Login failed: " + (await loginResponse.text()));
-      }
-
 
       const loginData = await loginResponse.json();
-      const loginDataString = JSON.stringify(loginData);
-      console.log(loginData)
+      if (loginResponse.ok) {
 
-      // push to local storage
-      localStorage.setItem("loginData", loginDataString);
+        const loginDataString = JSON.stringify(loginData);
 
-      const token = loginData.data.accessToken;
-      localStorage.setItem("accessToken", token);
+        // push to local storage
+        localStorage.setItem("loginData", loginDataString);
 
-      const autherName = loginData.data.name;
+        const token = loginData.data.accessToken;
+        localStorage.setItem("accessToken", token);
 
-      // Use the token to authenticate second request
-      const apiKeyPayload = {
-        data: {
-          name: `${autherName}`,
-          key: `${apiKey}`,
-        },
-        meta: {},
-      };
+        const autherName = loginData.data.name;
 
-      const apiKeyResponse = await fetch(apiKeyUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(apiKeyPayload),
-      });
-      window.location.href = "/pages/profile.html";
-      if (!apiKeyResponse.ok) {
-        throw new Error(
-          "API Key creation failed: " + (await apiKeyResponse.text())
-        );
+        // Use the token to authenticate second request
+        const apiKeyPayload = {
+          data: {
+            name: `${autherName}`,
+            key: `${apiKey}`,
+          },
+          meta: {},
+        };
+  
+        const apiKeyResponse = await fetch(apiKeyUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(apiKeyPayload),
+        });
+        window.location.href = "/pages/profile.html";
+  
+        if (!apiKeyResponse.ok) {
+          console.log(apiKeyResponse);
+        }
+  
+        const apiKeyData = await apiKeyResponse.json();
+        localStorage.setItem("apiKey", apiKeyData.data.key);
+
+      } else {
+        const listOFErrors = document.querySelector("#list-of-errors");
+        const errorMessages = loginData.errors;
+        listOFErrors.innerHTML = "";
+
+
+        displayError(errorMessages, listOFErrors);
+ 
       }
-      const apiKeyData = await apiKeyResponse.json();
-      localStorage.setItem("apiKey", apiKeyData.data.key);
+
     } catch (error) {
       console.error("Error:", error);
     }

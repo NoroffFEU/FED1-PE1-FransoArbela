@@ -1,44 +1,27 @@
 .login-register-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex-direction: column;
-  min-height: 80vh;
+  max-width: 50rem;
 }
 
 .form-wrapper {
   box-shadow: var(--box-shadow);
-  width: 25rem;
-  min-height: 80vh;
-  /* padding: 2rem; */
-  display: flex;
-  flex-direction: column;
+  max-height: rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
   gap: 1rem;
+  justify-content: center;
+  justify-items: center;
+  padding: 2rem 0;
 }
 
-/* login */
-.inputError {
-  border: rgb(179, 0, 0) solid 2px;
-  border-radius: 4px;
-  width: 16rem;
-  /* padding: 0.5rem 1rem; */
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  height: fit-content;
+  margin-bottom: 2rem;
 }
 
-.displayError {
-  height: 2.2rem;
-  align-content: center;
-}
-
-.displayError #errorText {
-  width: fit-content;
-  min-height: 0;
-  margin-bottom: 0;
-  font-size: 1rem;
-  color: red;
-  background-color: rgb(255, 255, 168);
-  /* margin: 3rem 1rem; */
-}
 #login-form,
 #register-form {
   display: grid;
@@ -46,4 +29,11 @@
   grid-template-rows: 1fr;
   margin: 1rem 0;
   gap: 1rem;
+  width: 90%;
+  max-width: 25rem;
+}
+
+button {
+  width: 100%;
+  margin-top: 2rem;
 }
