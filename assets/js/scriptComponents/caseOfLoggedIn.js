@@ -1,4 +1,7 @@
-import { logoutAccount, redirectToLogin } from "/assets/js/auth/logout.js";
+import {
+  logoutAccount,
+  redirectToLogin,
+} from "/assets/js/scriptComponents/logout.js";
 
 // getting data from local storage
 const loginDataString = localStorage.getItem("loginData");
@@ -8,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (loginData) {
     // change the login button to the author's name
     const authorName = loginData.data.name;
+    const authorEmail = loginData.data.email;
+    const profileAvatar = loginData.data.avatar.url;
 
     const navElementWrapper = document.querySelector(".nav-element-wrapper");
     const offScreenNav = document.querySelector(".offscreen-nav");
@@ -21,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     offScreenNav?.appendChild(createLogoutButton());
-    navElementWrapper?.appendChild(createLogoutButton()); 
+    navElementWrapper?.appendChild(createLogoutButton());
 
     // change the log in text to the authors name
     // and the direction path to profile instead of log in page
@@ -43,8 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     registerBtn.remove();
     offScreenRegisterBtn.remove();
-
-
 
     // logout functionality
     const logout = document.querySelector(".logout");

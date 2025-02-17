@@ -1,5 +1,4 @@
 import { getUsername } from "../scriptComponents/caseOfLoggedIn.js"; // Import function to get the logged-in user's username
-// import {searchPosts} from "../scriptComponents/search.js"
 
 //=================================== Fetch blog posts and display them in the blog feed
 document.addEventListener("DOMContentLoaded", async () => {
@@ -44,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       carousel.appendChild(carouselImgAndTitle);
     });
 
-    // Redirect only when clicking the currently displayed slide
+    // Redirect the current displayed slide
     carousel.addEventListener("click", () => {
       const currentSlide = document.querySelector(
         ".carousel-images.display-slide"
@@ -160,8 +159,33 @@ document.addEventListener("DOMContentLoaded", async () => {
       posts(result);
     });
 
-    //========================= Generate blog post cards
+    // ======================== Filter blog posts
 
+    const filterInput = document.querySelector("#filter");
+
+    filterInput.addEventListener("change", (event) => {
+      const filterValue = event.target.value;
+    
+      // Copy the array
+      let filtered = [...blogData];
+      
+      if (filterValue === "latest") {
+
+        // newest first
+        filtered.sort((a, b) => new Date(b.created) - new Date(a.created));
+      } else if (filterValue === "oldest") {
+
+        // oldest first
+        filtered.sort((a, b) => new Date(a.created) - new Date(b.created));
+      } else {
+        // all no sorting
+        filtered = [...blogData];
+      }
+  
+      posts(filtered);
+    });
+
+    //========================= Generate blog post cards
     const posts = (filteredPosts) => {
       cards.innerHTML = "";
       const postList = filteredPosts.length > 0 ? filteredPosts : blogData;
@@ -203,6 +227,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     };
     posts(blogData);
+
     //============================ Display message if no blog posts are found
     if (!cards.innerHTML) {
       cards.innerHTML = "<p>No posts found.</p>";

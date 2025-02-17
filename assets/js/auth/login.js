@@ -1,6 +1,5 @@
 import { displayError } from "../scriptComponents/displayError.js";
 
-// import { displayError } from "../scriptComponents/displayError.js";
 const profileContainer = document.querySelector("#profile-container");
 const loginForm = document.querySelector(".login-form");
 const emailInput = document.querySelector("#email");
@@ -27,7 +26,6 @@ submit.addEventListener("click", (event) => {
 
   const loginAndUseToken = async () => {
     const loginUrl = "https://v2.api.noroff.dev/auth/login";
-    const apiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
 
     const loginInput = {
       email: `${emailInput.value}`,
@@ -47,54 +45,15 @@ submit.addEventListener("click", (event) => {
 
       const loginData = await loginResponse.json();
       if (loginResponse.ok) {
-
         const loginDataString = JSON.stringify(loginData);
 
         // push to local storage
         localStorage.setItem("loginData", loginDataString);
-
         const token = loginData.data.accessToken;
         localStorage.setItem("accessToken", token);
-
-        const autherName = loginData.data.name;
-
-        // Use the token to authenticate second request
-        const apiKeyPayload = {
-          data: {
-            name: `${autherName}`,
-            key: `${apiKey}`,
-          },
-          meta: {},
-        };
-  
-        const apiKeyResponse = await fetch(apiKeyUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(apiKeyPayload),
-        });
+        // redirect to profile page
         window.location.href = "/pages/profile.html";
-  
-        if (!apiKeyResponse.ok) {
-          console.log(apiKeyResponse);
-        }
-  
-        const apiKeyData = await apiKeyResponse.json();
-        localStorage.setItem("apiKey", apiKeyData.data.key);
-
-      } else {
-        const listOFErrors = document.querySelector("#list-of-errors");
-        const errorMessages = loginData.errors;
-        listOFErrors.innerHTML = "";
-
-
-        displayError(errorMessages, listOFErrors);
- 
       }
-
     } catch (error) {
       console.error("Error:", error);
     }

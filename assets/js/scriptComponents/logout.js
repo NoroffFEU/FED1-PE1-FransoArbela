@@ -1,5 +1,5 @@
 // logout
-const apiKey = localStorage.getItem("apiKey");
+const accessToken = localStorage.getItem("accessToken");
 export const logoutAccount = () => {
   ["apiKey", "loginData", "accessToken"].forEach((key) =>
     localStorage.removeItem(key)
@@ -13,7 +13,7 @@ export const redirectToLogin = () => {
 
 // // checking if user logged in
 export const checkLogin = () => {
-    if (!apiKey) {
+    if (!accessToken) {
         window.location.href = "/account/login.html";
       }
 }

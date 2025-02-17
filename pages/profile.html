@@ -3,14 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.png"
+      type="image/x-icon"
+    />
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/css-pages/profile.css">
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/css-pages/profile.css" />
 
     <!-- Scripts -->
     <script type="module" src="/assets/js/auth/profile.js"></script>
-    <script type="module" src="/assets/js/scriptComponents/caseOfLoggedIn.js"></script>
+    <script
+      type="module"
+      src="/assets/js/scriptComponents/caseOfLoggedIn.js"
+    ></script>
     <script type="module" src="/assets/js/edit/profile-post-feeder.js"></script>
     <script type="module" src="/assets/js/main.js"></script>
 
@@ -61,11 +68,10 @@
 
     <main>
       <section>
-        <h1>User Profile</h1>
-
-        <button id="createNewPostPage">Create new post</button>
         <!-- Fetching profile -->
         <div id="profile-container"></div>
+        <!-- create posts page button -->
+        <button id="createNewPostPage" class="primary-button">Create new post</button>
         <!-- Fetching posts -->
         <div id="cards"></div>
       </section>

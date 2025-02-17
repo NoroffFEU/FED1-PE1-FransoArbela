@@ -1,12 +1,10 @@
 .img-wrapper {
-    background-color: rgba(94, 153, 199, 0.34);
-    max-width: 680px;
+    max-width: 39.3rem;
   }
   
   #hero-img {
     max-width: 100%;
     object-fit: cover;
-    margin-bottom: 2rem;
   }
   
   #hero-title {
@@ -18,4 +16,14 @@
   #text-bold {
     font-weight: bold;
     font-size: 1.8rem;
+  }
+
+  #blog-post-link-title {
+    margin: 1rem 0;
+  }
+  #blog-post-link {
+    text-decoration: none;
+    width: 100%;
+    max-width: 39.3rem;
+    margin-bottom: 2rem;
   }

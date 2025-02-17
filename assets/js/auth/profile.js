@@ -1,16 +1,13 @@
 import {
   checkLogin,
-  logoutAccount,
-  redirectToLogin,
-} from "/assets/js/auth/logout.js";
+} from "/assets/js/scriptComponents/logout.js";
 
 // Select DOM elements
 const profileContainer = document.querySelector("#profile-container");
 const createNewPostPage = document.querySelector("#createNewPostPage");
 
-document.addEventListener("DOMContentLoaded", async (event) => {
-  const apiKey = localStorage.getItem("apiKey");
-  const accessToken = localStorage.getItem("accessToken");
+document.addEventListener("DOMContentLoaded", () => {
+
 
   const loginDataString = localStorage.getItem("loginData");
 
@@ -21,33 +18,18 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   const AuthorProfilePic = loginData.data.banner.url;
   const AuthorAvatar = loginData.data.avatar.url;
 
-  event.preventDefault();
-
-  try {
-    const response = await fetch(`https://v2.api.noroff.dev`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "X-Noroff-API-Key": `${apiKey}`,
-      },
-    });
-
-    if (!response.ok) throw new Error("Failed to fetch profile");
-
-    const data = await response.json();
-
     // Render user profile in the DOM
     profileContainer.innerHTML = `
-      <img id="profile-banner" src="${AuthorProfilePic}" alt="${loginData.data.banner.alt}" />
       <img id="profile-avatar" src="${AuthorAvatar}" alt="${loginData.data.avatar.alt}" />
-      <p><strong>Name:</strong> ${authorName}</p>
-      <p><strong>Email:</strong> ${AuthorEmail}</p>
+      <img id="profile-banner" src="${AuthorProfilePic}" alt="${loginData.data.banner.alt}" />
+      <div class="profile-details">
+        <h3>${authorName}</h3>
+        <p>${AuthorEmail}</p>
+      </div>
     `;
-  } catch (error) {
-    console.error("Error fetching profile:", error);
-    console.error("Failed to load profile. Please try again.");
-    redirectToLogin();
-  }
 });
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   checkLogin();
