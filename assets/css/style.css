@@ -148,7 +148,7 @@ section p {
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
-  z-index: 3;
+  z-index: 10;
 }
 
 .offscreen-menu.active {
@@ -182,8 +182,8 @@ section p {
   transition: all 0.3s linear 0s;
 }
 .burger-menu.is-active {
-  z-index: 4;
-  margin-right: 1rem;
+  z-index: 11;
+  /* margin-right: 1rem; */
 }
 
 .burger-menu.is-active span:nth-child(1) {

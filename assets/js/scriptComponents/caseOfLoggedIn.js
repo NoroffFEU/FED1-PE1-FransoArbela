@@ -3,6 +3,9 @@ import {
   redirectToLogin,
 } from "/assets/js/scriptComponents/logout.js";
 
+
+// =============== thhe changes in this file is made in case the admin is logged in
+
 // getting data from local storage
 const loginDataString = localStorage.getItem("loginData");
 const loginData = JSON.parse(loginDataString);
@@ -11,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (loginData) {
     // change the login button to the author's name
     const authorName = loginData.data.name;
-    const authorEmail = loginData.data.email;
-    const profileAvatar = loginData.data.avatar.url;
 
     const navElementWrapper = document.querySelector(".nav-element-wrapper");
     const offScreenNav = document.querySelector(".offscreen-nav");
@@ -28,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     offScreenNav?.appendChild(createLogoutButton());
     navElementWrapper?.appendChild(createLogoutButton());
 
-    // change the log in text to the authors name
-    // and the direction path to profile instead of log in page
+    // change the login text to the authors name
+    // and the direction path to profile instead of login page
     const loginBtn = document.querySelector("#loginBtn");
     const offScreenLoginBtn = document.querySelector("#offscreen-loginBtn");
 
@@ -58,8 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// in case the user is not logged in, my name will be displayed in the url,
-// if they are logged in, their name will be displayed
+// in case the user is not logged in, my name will be displayed in the url to show my posts on the blog feed,
+// if they are logged in, their name will be displayed.
 export function getUsername() {
   const loginDataString = localStorage.getItem("loginData");
   if (!loginDataString) return "Samal";

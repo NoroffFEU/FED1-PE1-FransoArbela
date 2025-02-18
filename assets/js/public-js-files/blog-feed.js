@@ -1,5 +1,10 @@
 import { getUsername } from "../scriptComponents/caseOfLoggedIn.js"; // Import function to get the logged-in user's username
 
+
+const filterInput = document.querySelector("#filter");
+const searchInput = document.querySelector("#search"); // Select the search input field
+
+
 //=================================== Fetch blog posts and display them in the blog feed
 document.addEventListener("DOMContentLoaded", async () => {
   const username = getUsername(); // Get the current user's username
@@ -69,8 +74,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     //=================================== Initialize carousel functionality
-    const allCarouselImg = document.querySelectorAll(".carousel-images");
-    const allCarouselTitles = document.querySelectorAll(".carousel-titles");
+    const allCarouselImg = document?.querySelectorAll(".carousel-images");
+    const allCarouselTitles = document?.querySelectorAll(".carousel-titles");
 
     let slideIndex = 0,
       intervalId;
@@ -84,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         slide.classList.remove("display-slide")
       );
 
-      // Ensure index stays within bounds
+      // Ensuring index stays within bounds
       if (index >= allCarouselImg.length) {
         slideIndex = 0;
       } else if (index < 0) {
@@ -112,6 +117,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelector(".prev").addEventListener("click", prevSlide);
     document.querySelector(".next").addEventListener("click", nextSlide);
 
+    const carouselWrapper = document.querySelector(".carousel-wrapper")
+    const searchAndFilter = document.querySelector("#search-and-filter")
+    if (allCarouselImg.length === 0 || allCarouselTitles.length === 0) {
+        carouselWrapper.innerHTML = "No posts to be displayed"
+        carousel.remove()
+        searchAndFilter.remove()
+
+      return;
+    }
+
     // Automatically change slides every 6 seconds
     const autoDisplayImgs = () => {
       allCarouselImg.length &&
@@ -131,8 +146,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     autoDisplayImgs(); // Start auto-slide
 
     //========================= Search blog post cards
-    const searchInput = document.querySelector("#search"); // Select the search input field
-
     searchInput.addEventListener("input", () => {
       const searchTerm = searchInput.value; // Convert input to lowercase for case-insensitive search
 
@@ -160,8 +173,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // ======================== Filter blog posts
-
-    const filterInput = document.querySelector("#filter");
 
     filterInput.addEventListener("change", (event) => {
       const filterValue = event.target.value;

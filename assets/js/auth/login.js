@@ -1,15 +1,9 @@
 import { displayError } from "../scriptComponents/displayError.js";
 
-const profileContainer = document.querySelector("#profile-container");
-const loginForm = document.querySelector(".login-form");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 const submit = document.querySelector(".login");
-const alreadyloggedIn = document.querySelector(".alreadylogged-in");
 
-// local storage
-const apiKey = localStorage.getItem("apiKey");
-const accessToken = localStorage.getItem("accessToken");
 
 // check if user is already logged in
 document.addEventListener("DOMContentLoaded", () => {
@@ -53,9 +47,18 @@ submit.addEventListener("click", (event) => {
         localStorage.setItem("accessToken", token);
         // redirect to profile page
         window.location.href = "/pages/profile.html";
+      } else {
+        
+        const listOFErrors = document.querySelector("#list-of-errors");
+
+        const errorMessages = loginData.errors;
+  
+        listOFErrors.innerHTML = "";
+  
+        displayError(errorMessages, listOFErrors)
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error)
     }
   };
 
