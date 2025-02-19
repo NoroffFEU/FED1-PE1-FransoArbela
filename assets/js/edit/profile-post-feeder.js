@@ -1,7 +1,9 @@
 import { deletePost } from "./delete.js";
+import { showLoadingMessage, hideLoadingMessage } from "../public-js-files/loading.js";
 
 /////////////////////////////////////////////////////////////////////   get posts
 document.addEventListener("DOMContentLoaded", async () => {
+  showLoadingMessage()
   const loginDataString = localStorage.getItem("loginData");
   const loginData = JSON.parse(loginDataString);
   const authorName = loginData.data.name;
@@ -75,6 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await response.text()
       );
     }
+    hideLoadingMessage()
   } catch (error) {
     console.error("Error fetching blog posts:", error);
   }

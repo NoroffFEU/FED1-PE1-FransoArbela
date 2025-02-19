@@ -109,7 +109,7 @@
 
 .edit-btn {
   background-color: rgba(37, 37, 37, 0.831);
-  color: var(--primary-text-color);
+  color: var(--text-color-white);
 }
 
 .edit-btn:hover {
@@ -118,7 +118,7 @@
 
 .delete-post-btn {
   background-color: rgb(146, 0, 0);
-  color: var(--primary-text-color);
+  color: var(--text-color-white);
 }
 .delete-post-btn:hover {
   background-color: rgba(151, 0, 0, 0.721);

@@ -1,5 +1,6 @@
 .single-post {
-  padding: 0 15rem;
+  width: 99%;
+  max-width: 55rem;
 }
 .single-post img {
   width: 100%;

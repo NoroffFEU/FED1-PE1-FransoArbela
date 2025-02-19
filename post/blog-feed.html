@@ -3,14 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.png"
+      type="image/x-icon"
+    />
     <!-- css -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/css-pages/blog-feed.css">
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/css-pages/blog-feed.css" />
 
     <!-- Scripts -->
-    <script type="module" src="/assets/js/public-js-files/blog-feed.js"></script>
-    <script type="module" src="/assets/js/scriptComponents/caseOfLoggedIn.js"></script>
+    <script
+      type="module"
+      src="/assets/js/public-js-files/blog-feed.js"
+    ></script>
+    <script
+      type="module"
+      src="/assets/js/scriptComponents/caseOfLoggedIn.js"
+    ></script>
     <script type="module" src="/assets/js/main.js"></script>
 
     <title>Blog Feed</title>
@@ -63,7 +73,7 @@
       <section>
         <h1 class="blog-hero-title">Blog Feed</h1>
       </section>
-      <section>
+      <section id="carousel-section">
         <div class="carousel-wrapper">
           <button class="prev">&#10094;</button>
           <button class="next">&#10095;</button>
@@ -73,19 +83,25 @@
 
       <!-- Search -->
       <section id="search-and-filter">
-        <label for="search">Search</label>
-        <input type="search" name="search" id="search" placeholder="Search" autocomplete="off" />
-        <label for="filter">Filter by date</label>
-         <!-- Filter -->
-        <select id="filter">
-          <option value="all">All</option>
-          <option value="latest">Latest</option>
-          <option value="oldest">Oldest</option>
-        </select>
+        <div class="search-wrapper">
+          <input
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Search"
+            autocomplete="off"
+          />
+        </div>
+        <div class="filter-wrapper">
+          <label for="filter">Filter by date</label>
+          <!-- Filter -->
+          <select id="filter">
+            <option value="all">All</option>
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
       </section>
-
-
-
 
       <section>
         <div id="cards"></div>

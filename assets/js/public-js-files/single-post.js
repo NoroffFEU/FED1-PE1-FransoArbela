@@ -1,4 +1,5 @@
 import { getUsername } from "../scriptComponents/caseOfLoggedIn.js";
+import { showLoadingMessage, hideLoadingMessage } from "./loading.js";
 
 // this file shows the single post in details when they are being clicked on from blog feed
 
@@ -10,6 +11,7 @@ const postId = params.get("id");
 const username = getUsername();
 
 document.addEventListener("DOMContentLoaded", async () => {
+  showLoadingMessage()
   try {
     const response = await fetch(
       `https://v2.api.noroff.dev/blog/posts/${username}/${postId}`,
@@ -61,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await response.text()
       );
     }
+    hideLoadingMessage()
   } catch (error) {
     console.error("Error fetching blog posts:", error);
   }
