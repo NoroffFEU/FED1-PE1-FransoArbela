@@ -28,6 +28,12 @@
   box-shadow: var(--box-shadow);
 }
 
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* direct to create post button */
 #createNewPostPage {
   width: max-content;
