@@ -27,7 +27,7 @@ submitButton.addEventListener("click", (event) => {
 
       const data = await response.json();
       if (response.ok) {
-        return console.log(data);
+        return alert("User registered successfully!");
       } else {
         const listOFErrors = document.querySelector("#list-of-errors");
 

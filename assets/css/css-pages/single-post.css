@@ -9,24 +9,23 @@
 
 #blog-feed-title {
   text-align: start;
-  font-size: 2.5rem;
   margin-bottom:2rem ;
 }
 #blog-feed-body {
     white-space: pre-wrap;
 }
 
-.single-post h5{
+.single-post h6, h5{
     font-weight: 400;
 }
 #blog-feed-author {
-  font-size: 0.8rem;
   height: fit-content;
   margin-bottom: 1rem;
 }
 
-.single-post #date {
-  font-size: 0.8rem;
+.single-post p {
+  margin-bottom: 1rem;
+  min-height: fit-content;
 }
 
 #blog-feed-dates {

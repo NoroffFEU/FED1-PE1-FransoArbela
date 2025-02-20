@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       carouselImgAndTitle.id = `${post.id}`;
 
       carouselImgAndTitle.innerHTML = `
-      <h1 class="carousel-titles">${post.title}</h1>
+      <h5 class="carousel-titles">${post.title}</h5>
       <img class="carousel-images" src="${post.media?.url}" alt="${post.media?.alt}">
   `;
       carousel.appendChild(carouselImgAndTitle);

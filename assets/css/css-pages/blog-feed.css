@@ -1,5 +1,5 @@
 #carousel-section {
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* Carousel wrapper containing the image slider */
@@ -42,7 +42,7 @@ margin-bottom: 2rem;
 }
 
 /* Styling for carousel headings inside the images */
-.carousel h1 {
+.carousel h5 {
   opacity: 0; /* Initially hidden */
   transform: translateY(10px); /* Start slightly lower */
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
@@ -54,7 +54,6 @@ margin-bottom: 2rem;
   color: white;
   padding: 1rem;
   text-align: center;
-  font-size: 1.2rem;
   z-index: 2;
   text-align: start;
 }
@@ -72,7 +71,7 @@ margin-bottom: 2rem;
   transform: scale(1.05);
 }
 /* Display active carousel title and image */
-.carousel h1.display-slide {
+.carousel h5.display-slide {
   opacity: 1;
   transform: translateY(0);
 }
@@ -122,8 +121,8 @@ margin-bottom: 2rem;
 #search {
   width: 18rem;
 }
-/* ================= MAIN CONTENT ================= */
 
+/* ================= MAIN CONTENT ================= */
 /* Blog feed grid layout */
 #cards {
   display: grid;
@@ -131,6 +130,7 @@ margin-bottom: 2rem;
   gap: 2rem;
   margin: 0 auto;
   max-width: 100%;
+  width: 100%;
 }
 
 /* Blog post card styling */
@@ -142,9 +142,10 @@ margin-bottom: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: all 0.2s ease-in-out;
-  max-width: 325px;
+  width: 100%;
   justify-content: space-between;
   padding: 1rem;
+  min-width: 0;
 }
 
 /* Adds hover effect on blog post cards */
@@ -208,6 +209,7 @@ margin-bottom: 2rem;
   text-decoration: underline;
 }
 
+/* Media queries */
 @media (max-width: 685px) {
   .carousel-wrapper {
     padding: 0;
@@ -233,7 +235,7 @@ margin-bottom: 2rem;
   }
 }
 @media (max-width: 460px) {
-  .carousel h1 {
+  .carousel h5 {
     font-size: 1rem;
   }
 }

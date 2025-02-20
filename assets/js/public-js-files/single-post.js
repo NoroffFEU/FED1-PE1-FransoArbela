@@ -11,7 +11,7 @@ const postId = params.get("id");
 const username = getUsername();
 
 document.addEventListener("DOMContentLoaded", async () => {
-  showLoadingMessage()
+  showLoadingMessage();
   try {
     const response = await fetch(
       `https://v2.api.noroff.dev/blog/posts/${username}/${postId}`,
@@ -33,26 +33,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       postElement.className = "full-blog-post";
       postElement.innerHTML = `
       <h1 id="blog-feed-title">${post.title}</h1>
-      <h5 id="blog-feed-author">Author: ${post.author.name}</h5>
+      <h6 id="blog-feed-author">Author: ${post.author.name}</h6>
 
       <img src="${post.media?.url || ""}" alt="${post.media?.alt || "Image"}" />
 
       <p id="blog-feed-body">${post.body}</p>
 
       <div class="post-details">
-      <h5 id="blog-feed-tags">Tags: ${post.tags.join(", ")}</h5>
+      <p id="blog-feed-tags">Tags: ${post.tags.join(", ")}</p>
       <div id="blog-feed-dates">
-        <h5 id="date">Published: ${new Date(
+        <p id="date">Published: ${new Date(
           post.created
-        ).toLocaleDateString()}</h5>
-        <h5 id="date">Last updated: ${new Date(
+        ).toLocaleDateString()}</p>
+        <p id="date">Last updated: ${new Date(
           post.updated
-        ).toLocaleDateString()}</h5>
+        ).toLocaleDateString()}</p>
       </div>
       </div>
     `;
       fullBlog.appendChild(postElement);
-// in case the url id is empty
+      // in case the url id is empty
       if (postId === "") {
         fullBlog.innerHTML = "<p>No posts found.</p>";
       }
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await response.text()
       );
     }
-    hideLoadingMessage()
+    hideLoadingMessage();
   } catch (error) {
     console.error("Error fetching blog posts:", error);
   }

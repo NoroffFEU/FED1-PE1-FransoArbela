@@ -40,7 +40,7 @@
   grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   gap: 2rem;
   margin: 0 auto;
-  max-width: 100%;
+  width: 100%;
 }
 
 /* Blog post card styling */
@@ -52,9 +52,10 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: all 0.2s ease-in-out;
-  max-width: 325px;
   justify-content: space-between;
   padding: 1rem;
+  min-width: 0;
+  width: 100%;
 }
 
 /* Adds hover effect on blog post cards */
