@@ -169,7 +169,7 @@
   padding-bottom: 1rem;
 }
 
-/* Blog post paragraph (truncated text effect) */
+/* Blog post paragraph */
 #blog-feed-p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -225,7 +225,6 @@
   }
   .carousel-wrapper .next,
   .carousel-wrapper .prev {
-    height: 40%;
     z-index: 2;
     border-radius: var(--border-radius);
   }

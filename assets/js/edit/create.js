@@ -1,5 +1,7 @@
 import { displayError } from "../scriptComponents/displayError.js";
-
+import { checkLogin } from "/assets/js/scriptComponents/logout.js";
+checkLogin();
+// getting the input fields
 const title = document.querySelector("#title");
 const body = document.querySelector("#body");
 const img = document.querySelector("#img");
@@ -42,13 +44,11 @@ createNewPost.addEventListener("click", async (event) => {
       alert("New Post Created");
       window.location.href = "/pages/profile.html"; // Redirect to posts page
     } else {
-
-      const responseJSON = await response.json()
+      const responseJSON = await response.json();
       const listOFErrors = document.querySelector("#list-of-errors");
 
       listOFErrors.innerHTML = "";
       displayError(responseJSON.errors, listOFErrors);
-
     }
   } catch (error) {
     console.error("Error:", error);

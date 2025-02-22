@@ -1,5 +1,6 @@
 import { displayError } from "../scriptComponents/displayError.js";
 
+// getting the input fields
 const userName = document.querySelector("#username");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
@@ -27,7 +28,8 @@ submitButton.addEventListener("click", (event) => {
 
       const data = await response.json();
       if (response.ok) {
-        return alert("User registered successfully!");
+         alert("User registered successfully!");
+        window.location.href = "/pages/profile.html";
       } else {
         const listOFErrors = document.querySelector("#list-of-errors");
 

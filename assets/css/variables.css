@@ -18,10 +18,10 @@
 
   /* text */
   --p: 1rem;
-  --text-color-white: whitesmoke;
+  --text-color-white: #f5f5f5;
   --text-color-dark: #3d3d3d;
   --line-height:1.5;
-  --letter-spacing:0.08em;
+  --letter-spacing:0.08rem;
   /* fonts */
   --primary-font: "Poppins", sans-serif;
   --secondary-font: "Roboto", sans-serif;

@@ -1,10 +1,10 @@
 import {
   logoutAccount,
   redirectToLogin,
+  checkLogin
 } from "/assets/js/scriptComponents/logout.js";
 
-
-// =============== thhe changes in this file is made in case the admin is logged in
+// =============== the changes in this file is made in case the admin is logged in
 
 // getting data from local storage
 const loginDataString = localStorage.getItem("loginData");
@@ -51,10 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
     offScreenRegisterBtn.remove();
 
     // logout functionality
-    const logout = document.querySelector(".logout");
-    logout.addEventListener("click", () => {
-      logoutAccount();
-      redirectToLogin();
+    const logout = document.querySelectorAll(".logout");
+    logout.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        logoutAccount();
+        redirectToLogin();
+        checkLogin();
+      });
     });
   }
 });
