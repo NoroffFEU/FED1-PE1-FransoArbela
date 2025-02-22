@@ -10,7 +10,7 @@ const searchInput = document.querySelector("#search"); // Select the search inpu
 
 document.addEventListener("DOMContentLoaded", async () => {
   // show loading screen
-  showLoadingMessage();
+  // showLoadingMessage();
   const username = getUsername(); // Get the current user's username
 
   try {
@@ -251,6 +251,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //============================ Display message if no blog posts are found
     if (!cards.innerHTML) {
       cards.innerHTML = "<p>No posts found.</p>";
+      hideLoadingMessage()
     }
   } catch (error) {
     console.error("Error fetching blog posts:", error);
