@@ -10,7 +10,7 @@ const searchInput = document.querySelector("#search"); // Select the search inpu
 
 document.addEventListener("DOMContentLoaded", async () => {
   // show loading screen
-  // showLoadingMessage();
+  showLoadingMessage();
   const username = getUsername(); // Get the current user's username
 
   try {
@@ -78,37 +78,40 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     //=================================== Initialize carousel functionality
-    
+
     //  this carousel function was inspired from this video and a few more
     // https://www.youtube.com/watch?v=IL4b86MPJmU&t=923s&ab_channel=CodingLab
 
     const allCarouselImg = document?.querySelectorAll(".carousel-images");
     const allCarouselTitles = document?.querySelectorAll(".carousel-titles");
 
+    const latestCarouselImg =  [...allCarouselImg].slice(0, 3);
+    const latestCarouselTitles = [...allCarouselTitles].slice(0, 3);
+
     let slideIndex = 0,
       intervalId;
 
     const showSlide = (index) => {
       // Hide all slides before displaying the current one
-      allCarouselImg.forEach((slide) =>
+      latestCarouselImg.forEach((slide) =>
         slide.classList.remove("display-slide")
       );
-      allCarouselTitles.forEach((slide) =>
+      latestCarouselTitles.forEach((slide) =>
         slide.classList.remove("display-slide")
       );
 
       // Ensuring index stays within bounds
-      if (index >= allCarouselImg.length) {
+      if (index >= latestCarouselImg.length) {
         slideIndex = 0;
       } else if (index < 0) {
-        slideIndex = allCarouselImg.length - 1;
+        slideIndex = latestCarouselImg.length - 1;
       } else {
         slideIndex = index;
       }
 
       // Display the current slide
-      allCarouselImg[slideIndex].classList.add("display-slide");
-      allCarouselTitles[slideIndex].classList.add("display-slide");
+      latestCarouselImg[slideIndex].classList.add("display-slide");
+      latestCarouselTitles[slideIndex].classList.add("display-slide");
     };
 
     const nextSlide = () => {
@@ -127,20 +130,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const carouselWrapper = document.querySelector(".carousel-wrapper");
     const searchAndFilter = document.querySelector("#search-and-filter");
-    if (allCarouselImg.length === 0 || allCarouselTitles.length === 0) {
+    if (latestCarouselImg.length === 0 || latestCarouselTitles.length === 0) {
       carouselWrapper.innerHTML = "No posts to be displayed";
       carousel.remove();
       searchAndFilter.remove();
-
+      // hide loading screen
+      hideLoadingMessage();
       return;
     }
 
     // Automatically change slides every 6 seconds
     const autoDisplayImgs = () => {
-      allCarouselImg.length &&
-        allCarouselImg[slideIndex].classList.add("display-slide");
-      allCarouselTitles.length &&
-        allCarouselTitles[slideIndex].classList.add("display-slide");
+      latestCarouselImg.length &&
+        latestCarouselImg[slideIndex].classList.add("display-slide");
+      latestCarouselTitles.length &&
+        latestCarouselTitles[slideIndex].classList.add("display-slide");
       intervalId = setInterval(nextSlide, 6000);
     };
 
@@ -243,16 +247,13 @@ document.addEventListener("DOMContentLoaded", async () => {
               : "index"
           }.html?id=${postID}`;
         }
+        console.log("Redirecting to post:");
       });
     };
     posts(blogData);
     // hide loading screen
     hideLoadingMessage();
     //============================ Display message if no blog posts are found
-    if (!cards.innerHTML) {
-      cards.innerHTML = "<p>No posts found.</p>";
-      hideLoadingMessage()
-    }
   } catch (error) {
     console.error("Error fetching blog posts:", error);
   }
