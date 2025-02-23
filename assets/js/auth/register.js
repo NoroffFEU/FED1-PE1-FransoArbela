@@ -26,17 +26,22 @@ submitButton.addEventListener("click", (event) => {
         body: JSON.stringify(registerInput),
       });
 
-      const data = await response.json();
+      const registerData = await response.json();
       if (response.ok) {
          alert("User registered successfully!");
+
+         // push to local storage
+        const registerDataString = JSON.stringify(registerData);
+        localStorage.setItem("loginData", registerDataString);
+        const token = registerData.data.accessToken;
+        localStorage.setItem("accessToken", token);
+        // redirect to profile page
         window.location.href = "/pages/profile.html";
       } else {
+        
         const listOFErrors = document.querySelector("#list-of-errors");
-
-        const errorMessages = data.errors;
-
+        const errorMessages = registerData.errors;
         listOFErrors.innerHTML = "";
-
         displayError(errorMessages, listOFErrors)
       }
     } catch (error) {
