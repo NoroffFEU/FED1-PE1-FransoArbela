@@ -18,9 +18,28 @@
 .single-post h6, h5{
     font-weight: 400;
 }
+
+.author-and-copy-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.author-and-copy-link #copy-link-img {
+  width: 1.8rem;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+#copy-link {
+border: none;
+height: 1.5rem;
+}
+
 #blog-feed-author {
   height: fit-content;
-  margin-bottom: 1rem;
 }
 
 .single-post p {
